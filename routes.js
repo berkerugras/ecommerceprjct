@@ -1,7 +1,7 @@
 exports.index = function(req, res) {
 	res.render("index", {
 		// Template data
-		title: "Express"
+		title: "Alibazon"
 	});
 };
 
@@ -23,7 +23,7 @@ exports.hello = function(req, res) {
 				_     : _,
 
 				// Template data
-				title : "Hello World!",
+				title : "Alibazon",
 				items : items
 			});
 
