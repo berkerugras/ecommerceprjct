@@ -25,8 +25,8 @@ exports.hello = function(req, res) {
 				// Template data
 				title : "Alibazon",
 				items : items
-			});
 
+			});
 			client.close();
 		});
 	});
