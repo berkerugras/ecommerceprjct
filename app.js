@@ -27,7 +27,27 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // App routes
 app.use("/"     , indexRouter);
-app.use("/hello", helloRouter);
+app.use("/categories", helloRouter);
+app.use((req,res,next)=>{
+	const err=new Error("not found");
+	err.status=404;
+	next(err);
+})
+app.use((err,req,res,next)=>{
+	res.status(err.status||500);
+	res.render('error.ejs',{
+		message: err.message,
+		error:err
+
+
+	})
+	res.json({
+		error:{
+			message:err.message
+		}
+	})
+})
+
 
 // Run server
 http.createServer(app).listen(app.get("port"), function() {

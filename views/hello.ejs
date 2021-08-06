@@ -3,18 +3,27 @@
     <head>
         <title><%= title %></title>
         <link rel="stylesheet" href="/stylesheets/style.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     </head>
 
     <body>
     <header>
         <div class="topnav">
-            <a class="title"><%= title%></a>
-            <a href="#men">Men</a>
-            <a href="#women">Women</a>
+            <a class="title" href="http://localhost/"><%= title%></a>
+            <a href="http://localhost/categories/men">Men</a>
+            <a href="http://localhost/categories/women">Women</a>
             <a href="#signin" class="signin">Sign In</a>
             <a href="#signup" class="signup">Sign Up</a>
         </div>
     </header>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Home</li>
+            <li class="breadcrumb-item" aria-current="page">Womens</li>
+
+        </ol>
+    </nav>
         <h1><%= title %></h1>
         <ol>
             <% _.each(items, function(topC) { %>
@@ -46,7 +55,7 @@
         </ol>
     <footer>
         <div class="botnav">
-            <a class="title"><%= title%></a>
+            <a class="title"><%= title%> 2021</a>
         </div>
     </footer>
     </body>
