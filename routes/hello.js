@@ -34,7 +34,8 @@ router.get('/men',async function (req, res, next) {
             _: _,
             title: "Alibazon",
             items: response.data,
-            category:"Mens"
+            category:"Mens",
+            parentcategory:"Men"
 
         })
     } catch (err) {
@@ -55,7 +56,8 @@ router.get('/women',async (req, res, next) => {
             _:_,
             title:"Alibazon",
             items:response.data,
-            category:"Womens"
+            category:"Womens",
+            parentcategory:"Women"
         })
     } catch (err) {
         res.status(500).json({message: err});
