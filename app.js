@@ -9,17 +9,36 @@ var bodyParser=require('body-parser');
 var logger = require('morgan');
 var session=require('express-session');
 var methodOverride = require('method-override')
-
+const Sentry = require('@sentry/node');
+const Tracing = require("@sentry/tracing");
 
 //routes
 var indexRouter = require('./routes/index');
 var helloRouter = require('./routes/hello');
+
+
+Sentry.init({
+	dsn: "https://ca7d3717494b4e3190372605225f86dc@o943735.ingest.sentry.io/5892672",
+	integrations: [
+		// enable HTTP calls tracing
+		new Sentry.Integrations.Http({ tracing: true }),
+		// enable Express.js middleware tracing
+		new Tracing.Integrations.Express({ app }),
+	],
+
+	// Set tracesSampleRate to 1.0 to capture 100%
+	// of transactions for performance monitoring.
+	// We recommend adjusting this value in production
+	tracesSampleRate: 1.0,
+});
 
 // All environments
 app.set("port", 80);
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 app.use(logger("dev"));
+app.use(Sentry.Handlers.requestHandler());
+app.use(Sentry.Handlers.tracingHandler());
 app.use(bodyParser.json());
 app.use(methodOverride())
 app.use(cookieParser("61d333a8-6325-4506-96e7-a180035cc26f"));
@@ -29,6 +48,9 @@ app.use(express.static(path.join(__dirname, "public")));
 // App routes
 app.use("/"     , indexRouter);
 app.use("/categories", helloRouter);
+
+
+app.use(Sentry.Handlers.errorHandler());
 app.use((req,res,next)=>{
 	const err=new Error("not found");
 	err.status=404;
