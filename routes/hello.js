@@ -16,28 +16,12 @@ const axios = require("axios").create({baseUrl: "https://osf-digital-backend-aca
 // }
 
 
-router.get('/',function (req,res,next){
-    mdbClient.connect("mongodb://localhost:27017/", function(err, client) {
-        if(err){
-            res.json(err)
-        }
-        let db=client.db("shop");
-        const collection = db.collection('categories');
-
-
-        collection.find().toArray(function(err, items) {
-            res.render("hello", {
-                // Underscore.js lib
-                _     : _,
-
-                // Template data
-                title : "Alibazon",
-                items : items
-
-            });
-            client.close();
-        });
-    });
+router.get('/',async function (req, res, next) {
+    try {
+        await res.redirect("/categories/women")
+    }catch (err){
+        res.status(500).json({message: err});
+    }
 })
 
 router.get('/men',async function (req, res, next) {
@@ -49,7 +33,9 @@ router.get('/men',async function (req, res, next) {
         res.status(200).render("hello", {
             _: _,
             title: "Alibazon",
-            items: response.data
+            items: response.data,
+            category:"Mens"
+
         })
     } catch (err) {
         res.status(500).json({message: err});
@@ -68,7 +54,8 @@ router.get('/women',async (req, res, next) => {
         res.status(200).render("hello",{
             _:_,
             title:"Alibazon",
-            items:response.data
+            items:response.data,
+            category:"Womens"
         })
     } catch (err) {
         res.status(500).json({message: err});
