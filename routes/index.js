@@ -3,7 +3,7 @@ const router = express.Router();
 const _         = require("underscore");
 const mdbClient = require('mongodb').MongoClient;
 
-const records  =require('../records');
+const records  =require('../public/javascripts/records');
 
 // function asyncHandler(cb){
 //     return async (req, res, next)=>{

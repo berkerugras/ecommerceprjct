@@ -41,7 +41,18 @@ a {
 
 }
 .botnav {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   background-color: #333;
-  padding: 14px 16px;
+  padding: 5px 13px;
   overflow: hidden;
+  text-align: center;
+  color:white;
+}
+
+.htitle h1 {
+  left:20px;
+  color:wheat;
 }

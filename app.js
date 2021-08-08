@@ -8,6 +8,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser=require('body-parser');
 var logger = require('morgan');
 var session=require('express-session');
+var methodOverride = require('method-override')
+
 
 //routes
 var indexRouter = require('./routes/index');
@@ -19,11 +21,10 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 app.use(logger("dev"));
 app.use(bodyParser.json());
-
+app.use(methodOverride())
 app.use(cookieParser("61d333a8-6325-4506-96e7-a180035cc26f"));
 app.use(session());
 app.use(express.static(path.join(__dirname, "public")));
-// app.use(express.errorHandler());
 
 // App routes
 app.use("/"     , indexRouter);
@@ -50,6 +51,7 @@ app.use((err,req,res,next)=>{
 
 
 // Run server
-http.createServer(app).listen(app.get("port"), function() {
-	console.log("Express server listening on port " + app.get("port"));
+app.listen(app.get('port'),()=>{
+	console.log("Express Server Listening on port 80");
 });
+
