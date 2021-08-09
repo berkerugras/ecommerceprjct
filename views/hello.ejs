@@ -25,10 +25,10 @@
         </ol>
     </nav>
         <h1 class="htitle"><%= parentcategory %></h1>
-        <ol>
+        <ul>
             <% _.each(items, function(topC) { %>
             <li>
-                <h1><%= topC.name %></h1>
+                <h1><a href="http://localhost/categories/<%=varlink%>/<%=topC.name.toLowerCase()%>"><%= topC.name %></a></h1>
                 <p><%= topC.page_description %></p>
                 <% if (topC.image) { %>
                 <div>
@@ -36,7 +36,7 @@
                 </div>
                 <% } %>
                 <div>
-                    <ol>
+                    <ul>
                         <% _.each(topC.categories, function(subC) { %>
                         <li>
                             <h2><%= subC.name %></h2>
@@ -48,14 +48,14 @@
                             <% } %>
                         </li>
                         <% }); %>
-                    </ol>
+                    </ul>
                 </div>
             </li>
             <% }); %>
-        </ol>
+        </ul>
     <footer>
         <div class="botnav">
-            <a class="title"><%= title%> 2021</a>
+            <a class="title"><%= title%> @2021</a>
         </div>
     </footer>
     </body>

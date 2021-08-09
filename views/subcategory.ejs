@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+<header>
+    <div class="topnav">
+        <a class="title" href="http://localhost/"><%= title%></a>
+        <a href="http://localhost/categories/men">Men</a>
+        <a href="http://localhost/categories/women">Women</a>
+        <a href="#signin" class="signin">Sign In</a>
+        <a href="#signup" class="signup">Sign Up</a>
+    </div>
+</header>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Home</li>
+        <li class="breadcrumb-item" aria-current="page"><%=category %></li>
+
+    </ol>
+</nav>
+<h1 class="htitle"><%= parentcategory %></h1>
+<ol>
+    <% _.each(items, function(topC) { %>
+        <li>
+            <h1><a href="#asd"><%= topC.name %></a>></h1>
+            <p><%= topC.page_description %></p>
+            <% if (topC.image) { %>
+                <div>
+                    <img src="/images/<%= topC.image %>">
+                </div>
+            <% } %>
+            <div>
+                <ol>
+                    <% _.each(topC.categories, function(subC) { %>
+                        <li>
+                            <h2><%= subC.name %></h2>
+                            <p><%= subC.page_description %></p>
+                            <% if (subC.image) { %>
+                                <div>
+                                    <img src="/images/<%= subC.image %>">
+                                </div>
+                            <% } %>
+                        </li>
+                    <% }); %>
+                </ol>
+            </div>
+        </li>
+    <% }); %>
+</ol>
+<footer>
+    <div class="botnav">
+        <a class="title"><%= title%> @2021</a>
+    </div>
+</footer>
+</body>
+</html>
