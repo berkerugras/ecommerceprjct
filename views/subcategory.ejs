@@ -28,7 +28,7 @@
 <ol>
     <% _.each(items, function(topC) { %>
         <li>
-            <h1><a href="#asd"><%= topC.name %></a>></h1>
+            <h1><a href="http://localhost/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>/<%=topC.name.toLowerCase()%>"><%= topC.name %></a>></h1>
             <p><%= topC.page_description %></p>
             <% if (topC.image) { %>
                 <div>

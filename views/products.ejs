@@ -33,18 +33,14 @@
     <% _.each(items, function(topC) { %>
         <% if (topC.image_groups) { %>
         <%for(let img of topC.image_groups){%>
-        <%if(img.view_type==="large"){%>
+        <%if(img.view_type==="large" && !img.variation_value){%>
         <%for(let imglink of img.images){%>
-            <%if(a===0 || imglink.link!==link){%>
         <li>
             <div class="card-preview-big">
                 <h2 class="card-text-container"><%=topC.name%></h2>
-                <img  src="/images/<%=imglink.link %>" class="mix-container" alt="">
+                <img  src="/images/<%=imglink.link %>" class="mix-container" alt="<%=topC.name%>">
             </div>
         </li>
-        <%a=a+1%>
-        <%link=imglink.link%>
-        <%}%>
         <%}%>
         <%}%>
         <%}%>

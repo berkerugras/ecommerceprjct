@@ -79,6 +79,7 @@ router.get('/women/clothing',async (req, res, next) => {
             items:response.data,
             category:"Womens",
             parentcategory:"Clothing",
+            varlink:"women"
 
         })
     } catch (err) {
@@ -99,6 +100,7 @@ router.get('/women/jewelry',async (req, res, next) => {
             items:response.data,
             category:"Womens",
             parentcategory:"Jewelry",
+            varlink:"women",
 
         })
     } catch (err) {
@@ -121,6 +123,7 @@ router.get('/women/accessories',async (req, res, next) => {
             items:response.data,
             category:"Womens",
             parentcategory:"Accessories",
+            varlink:"women"
 
         })
     } catch (err) {
@@ -143,6 +146,7 @@ router.get('/men/clothing',async (req, res, next) => {
             items:response.data,
             category:"Mens",
             parentcategory:"Clothing",
+            varlink:"men"
 
         })
     } catch (err) {
@@ -163,6 +167,7 @@ router.get('/men/accessories',async (req, res, next) => {
             items:response.data,
             category:"Mens",
             parentcategory:"Accessories",
+            varlink:"men"
 
         })
     } catch (err) {
@@ -183,6 +188,7 @@ router.get('/women/jewelry/earrings',async (req, res, next) => {
             items:response.data,
             category:"Womens",
             parentcategory:"Jewelry",
+            varlink:"women"
 
         })
     } catch (err) {
@@ -191,7 +197,7 @@ router.get('/women/jewelry/earrings',async (req, res, next) => {
 
 })
 
-router.get('/women/accessories/bracelets',async (req, res, next) => {
+router.get('/women/jewelry/necklaces',async (req, res, next) => {
     try {
         const response = await axios({
             url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-jewelry-necklaces&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
@@ -202,7 +208,8 @@ router.get('/women/accessories/bracelets',async (req, res, next) => {
             title:"Alibazon",
             items:response.data,
             category:"Womens",
-            parentcategory:"Accessories",
+            parentcategory:"Jewelry",
+            varlink:"women"
 
         })
     } catch (err) {
