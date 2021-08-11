@@ -34,11 +34,21 @@
         <% if (topC.image_groups) { %>
         <%for(let img of topC.image_groups){%>
         <%if(img.view_type==="large" && !img.variation_value){%>
-        <%for(let imglink of img.images){%>
+        <%console.log(img.images.length)%>
+        <%if(img.images.length>1){%>
         <li>
             <div class="card-preview-big">
                 <h2 class="card-text-container"><%=topC.name%></h2>
-                <img  src="/images/<%=imglink.link %>" class="mix-container" alt="<%=topC.name%>">
+                <%for(let i=0;i<img.images.length;i++){%>
+                <img  src="/images/<%=img.images[i].link %>" class="mix-container" alt="<%=topC.name%>">
+                <%}%>
+            </div>
+        </li>
+        <%}else{%>
+        <li>
+            <div class="card-preview-big">
+                <h2 class="card-text-container"><%=topC.name%></h2>
+                <img  src="/images/<%=img.images[0].link %>" class="mix-container" alt="<%=topC.name%>">
             </div>
         </li>
         <%}%>

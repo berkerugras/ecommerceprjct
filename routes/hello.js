@@ -217,4 +217,70 @@ router.get('/women/jewelry/necklaces',async (req, res, next) => {
     }
 
 })
+
+router.get('/women/accessories/scarves',async (req, res, next) => {
+    try {
+        const response = await axios({
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-accessories-scarves&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            method: "get",
+        });
+        res.status(200).render("products",{
+            _:_,
+            title:"Alibazon",
+            items:response.data,
+            category:"Womens",
+            parentcategory:"Accessories",
+            varlink:"women"
+
+        })
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+
+})
+
+
+router.get('/women/accessories/shoes',async (req, res, next) => {
+    try {
+        const response = await axios({
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-accessories-shoes&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            method: "get",
+        });
+        res.status(200).render("products",{
+            _:_,
+            title:"Alibazon",
+            items:response.data,
+            category:"Womens",
+            parentcategory:"Accessories",
+            varlink:"women"
+
+        })
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+
+})
+
+router.get('/women/clothing/dresses',async (req, res, next) => {
+    try {
+        const response = await axios({
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-clothing-dresses&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            method: "get",
+        });
+        res.status(200).render("products",{
+            _:_,
+            title:"Alibazon",
+            items:response.data,
+            category:"Womens",
+            parentcategory:"Clothing",
+            varlink:"women"
+
+        })
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+
+})
+
+
 module.exports = router;
