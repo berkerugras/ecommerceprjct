@@ -10,8 +10,8 @@
     flex-wrap: wrap;
     border: 2px solid black;
     list-style: none;
-    justify-content: center ;
-    /* justify-content: space-evenly; */
+    /*justify-content: center ;*/
+    justify-content: space-evenly;
     align-content: flex-start;
     padding: 20px;
 }

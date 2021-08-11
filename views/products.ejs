@@ -36,12 +36,13 @@
         <%if(img.view_type==="large" && !img.variation_value){%>
         <%console.log(img.images.length)%>
         <%if(img.images.length>1){%>
+<!--        going to add some features later-->
         <li>
             <div class="card-preview-big">
                 <h2 class="card-text-container"><%=topC.name%></h2>
-                <%for(let i=0;i<img.images.length;i++){%>
-                <img  src="/images/<%=img.images[i].link %>" class="mix-container" alt="<%=topC.name%>">
-                <%}%>
+                <img  src="/images/<%=img.images[0].link %>" class="mix-container" alt="<%=topC.name%>">
+<!--                <p class="card-text-container"><%=topC.short_description%></p>-->
+                <p class="card-text-container">price: <%=topC.price%>$</p>
             </div>
         </li>
         <%}else{%>
@@ -49,6 +50,8 @@
             <div class="card-preview-big">
                 <h2 class="card-text-container"><%=topC.name%></h2>
                 <img  src="/images/<%=img.images[0].link %>" class="mix-container" alt="<%=topC.name%>">
+<!--                <p class="card-text-container"><%=topC.short_description%></p>-->
+                <p class="card-text-container">price: <%=topC.price%>$</p>
             </div>
         </li>
         <%}%>
