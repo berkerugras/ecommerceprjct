@@ -1,20 +1,20 @@
 // Module dependencies.
-var express = require("express")
+const express = require("express")
   , http    = require("http")
   , path    = require("path")
   , routes  = require("./routes");
-var app     = express();
-var cookieParser = require('cookie-parser');
-var bodyParser=require('body-parser');
-var logger = require('morgan');
-var session=require('express-session');
-var methodOverride = require('method-override')
+const app     = express();
+const cookieParser = require('cookie-parser');
+const bodyParser=require('body-parser');
+const logger = require('morgan');
+const session=require('express-session');
+const methodOverride = require('method-override')
 const Sentry = require('@sentry/node');
 const Tracing = require("@sentry/tracing");
 
 //routes
-var indexRouter = require('./routes/index');
-var helloRouter = require('./routes/hello');
+const indexRouter = require('./routes/index');
+const helloRouter = require('./routes/hello');
 
 
 Sentry.init({
@@ -48,6 +48,8 @@ app.use(express.static(path.join(__dirname, "public")));
 // App routes
 app.use("/"     , indexRouter);
 app.use("/categories", helloRouter);
+
+
 
 
 app.use(Sentry.Handlers.errorHandler());
