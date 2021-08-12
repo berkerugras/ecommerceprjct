@@ -2,7 +2,6 @@
 <html>
 <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/containers.css" />
     <link rel="stylesheet" href="/stylesheets/product-list.style.css"/>
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -26,7 +25,7 @@
 
     </ol>
 </nav>
-<h1 class="htitle"><%= parentcategory %></h1>
+<p class="htitle"><%= type %></p>
 <ul class="card-container">
     <%let a=0%>
     <%let link=""%>
@@ -40,18 +39,36 @@
         <li>
             <div class="card-preview-big">
                 <h2 class="card-text-container"><%=topC.name%></h2>
-                <img  src="/images/<%=img.images[0].link %>" class="mix-container" alt="<%=topC.name%>">
-<!--                <p class="card-text-container"><%=topC.short_description%></p>-->
+                <div class="mix-container">
+                    <img  src="/images/<%=img.images[0].link %>" class="mix-container" alt="<%=topC.name%>">
+                </div>
+                <%if(topC.short_description.length>=153){%>
+                <p class="cardtext"><%=topC.short_description.substring(0,153)%>...</p>
                 <p class="card-text-container">price: <%=topC.price%>$</p>
+                <button class="show-more-btn">View Product!</button>
+                <%}else{%>
+                <p class="cardtext"><%=topC.short_description%>...</p>
+                <p class="card-text-container">price: <%=topC.price%>$</p>
+                <button class="show-more-btn">View Product!</button>
+                <%}%>
             </div>
         </li>
         <%}else{%>
         <li>
             <div class="card-preview-big">
                 <h2 class="card-text-container"><%=topC.name%></h2>
-                <img  src="/images/<%=img.images[0].link %>" class="mix-container" alt="<%=topC.name%>">
-<!--                <p class="card-text-container"><%=topC.short_description%></p>-->
+                <div class="mix-container">
+                    <img  src="/images/<%=img.images[0].link %>" class="mix-container" alt="<%=topC.name%>">
+                </div>
+                <%if(topC.short_description.length>=153){%>
+                <p class="cardtext"><%=topC.short_description.substring(0,153)%>...</p>
                 <p class="card-text-container">price: <%=topC.price%>$</p>
+                <button class="show-more-btn">View Product!</button>
+                <%}else{%>
+                <p class="cardtext"><%=topC.short_description.substring(0,153)%>...</p>
+                <p class="card-text-container">price: <%=topC.price%>$</p>
+                <button class="show-more-btn">View Product!</button>
+                <%}%>
             </div>
         </li>
         <%}%>

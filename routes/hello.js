@@ -188,7 +188,8 @@ router.get('/women/jewelry/earrings',async (req, res, next) => {
             items:response.data,
             category:"Womens",
             parentcategory:"Jewelry",
-            varlink:"women"
+            varlink:"women",
+            type:"Ear Rings"
 
         })
     } catch (err) {
@@ -209,7 +210,8 @@ router.get('/women/jewelry/necklaces',async (req, res, next) => {
             items:response.data,
             category:"Womens",
             parentcategory:"Jewelry",
-            varlink:"women"
+            varlink:"women",
+            type:"Necklaces"
 
         })
     } catch (err) {
@@ -230,7 +232,9 @@ router.get('/women/accessories/scarves',async (req, res, next) => {
             items:response.data,
             category:"Womens",
             parentcategory:"Accessories",
-            varlink:"women"
+            varlink:"women",
+            type:"Scarves"
+
 
         })
     } catch (err) {
@@ -252,7 +256,9 @@ router.get('/women/accessories/shoes',async (req, res, next) => {
             items:response.data,
             category:"Womens",
             parentcategory:"Accessories",
-            varlink:"women"
+            varlink:"women",
+            type:"Shoes"
+
 
         })
     } catch (err) {
@@ -273,7 +279,55 @@ router.get('/women/clothing/dresses',async (req, res, next) => {
             items:response.data,
             category:"Womens",
             parentcategory:"Clothing",
-            varlink:"women"
+            varlink:"women",
+            type:"Dresses"
+
+
+        })
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+
+})
+
+router.get('/women/clothing/jacket*',async (req, res, next) => {
+    try {
+        const response = await axios({
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-clothing-jackets&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            method: "get",
+        });
+        res.status(200).render("products",{
+            _:_,
+            title:"Alibazon",
+            items:response.data,
+            category:"Womens",
+            parentcategory:"Clothing",
+            varlink:"women",
+            type:"Jacket and Coats"
+
+
+        })
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+
+})
+
+router.get('/women/clothing/bottom*',async (req, res, next) => {
+    try {
+        const response = await axios({
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-clothing-bottoms&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            method: "get",
+        });
+        res.status(200).render("products",{
+            _:_,
+            title:"Alibazon",
+            items:response.data,
+            category:"Womens",
+            parentcategory:"Clothing",
+            varlink:"women",
+            type:"Bottoms"
+
 
         })
     } catch (err) {
