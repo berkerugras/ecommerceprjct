@@ -336,5 +336,212 @@ router.get('/women/clothing/bottom*',async (req, res, next) => {
 
 })
 
+router.get('/women/clothing/top*',async (req, res, next) => {
+    try {
+        const response = await axios({
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-clothing-tops&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            method: "get",
+        });
+        res.status(200).render("products",{
+            _:_,
+            title:"Alibazon",
+            items:response.data,
+            category:"Womens",
+            parentcategory:"Clothing",
+            varlink:"women",
+            type:"Tops"
 
+
+        })
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+
+})
+
+router.get('/men/accessories/luggage*',async (req, res, next) => {
+    try {
+        const response = await axios({
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-accessories-luggage&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            method: "get",
+        });
+        res.status(200).render("products",{
+            _:_,
+            title:"Alibazon",
+            items:response.data,
+            category:"Womens",
+            parentcategory:"Clothing",
+            varlink:"women",
+            type:"Luggages"
+
+
+        })
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+
+})
+
+router.get('/men/accessories/glove*',async (req, res, next) => {
+    try {
+        const response = await axios({
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-accessories-gloves&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            method: "get",
+        });
+        res.status(200).render("products",{
+            _:_,
+            title:"Alibazon",
+            items:response.data,
+            category:"Womens",
+            parentcategory:"Clothing",
+            varlink:"women",
+            type:"Gloves"
+
+
+        })
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+
+})
+
+router.get('/men/accessories/tie*',async (req, res, next) => {
+    try {
+        const response = await axios({
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-accessories-ties&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            method: "get",
+        });
+        res.status(200).render("products",{
+            _:_,
+            title:"Alibazon",
+            items:response.data,
+            category:"Womens",
+            parentcategory:"Clothing",
+            varlink:"women",
+            type:"Ties"
+
+
+        })
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+
+})
+
+router.get('/men/clothing/dress*',async (req, res, next) => {
+    try {
+        const response = await axios({
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-clothing-dress-shirts&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            method: "get",
+        });
+        res.status(200).render("products",{
+            _:_,
+            title:"Alibazon",
+            items:response.data,
+            category:"Womens",
+            parentcategory:"Clothing",
+            varlink:"women",
+            type:"Dress Shirts"
+
+
+        })
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+
+})
+
+
+
+router.get('/men/clothing/short*',async (req, res, next) => {
+    try {
+        const response = await axios({
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-clothing-shorts&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            method: "get",
+        });
+        res.status(200).render("products",{
+            _:_,
+            title:"Alibazon",
+            items:response.data,
+            category:"Womens",
+            parentcategory:"Clothing",
+            varlink:"women",
+            type:"Shorts"
+
+
+        })
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+
+})
+
+router.get('/men/clothing/jacket*',async (req, res, next) => {
+    try {
+        const response = await axios({
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-clothing-jackets&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            method: "get",
+        });
+        res.status(200).render("products",{
+            _:_,
+            title:"Alibazon",
+            items:response.data,
+            category:"Womens",
+            parentcategory:"Clothing",
+            varlink:"women",
+            type:"Jackets"
+
+
+        })
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+
+})
+
+router.get('/men/clothing/pant*',async (req, res, next) => {
+    try {
+        const response = await axios({
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-clothing-pants&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            method: "get",
+        });
+        res.status(200).render("products",{
+            _:_,
+            title:"Alibazon",
+            items:response.data,
+            category:"Womens",
+            parentcategory:"Clothing",
+            varlink:"women",
+            type:"Jackets"
+
+
+        })
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+
+})
+
+router.get('/men/clothing/suit*',async (req, res, next) => {
+    try {
+        const response = await axios({
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-clothing-suits&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            method: "get",
+        });
+        res.status(200).render("products",{
+            _:_,
+            title:"Alibazon",
+            items:response.data,
+            category:"Womens",
+            parentcategory:"Clothing",
+            varlink:"women",
+            type:"Suits"
+
+
+        })
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+
+})
 module.exports = router;
