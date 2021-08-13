@@ -32,8 +32,8 @@
     <% _.each(items, function(topC) { %>
         <% if (topC.image_groups) { %>
         <%for(let img of topC.image_groups){%>
+
         <%if(img.view_type==="large" && !img.variation_value){%>
-        <%console.log(img.images.length)%>
         <%if(img.images.length>1){%>
 <!--        going to add some features later-->
         <li>
@@ -42,17 +42,17 @@
                 <div class="mix-container">
                     <img  src="/images/<%=img.images[0].link %>" class="mix-container" alt="<%=topC.name%>">
                 </div>
-                <%if(topC.short_description.length>=140){%>
+                <% if(topC.short_description.length>=140){%>
                 <p class="cardtext"><%=topC.short_description.substring(0,140)%>...</p>
                 <div class="mix-container">
                 <p class="card-text-container">Price: <%=topC.price%>$</p>
-                <button class="show-more-btn">View Product!</button>
+                    <button class="show-more-btn"><a href="http://localhost/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>/<%=type.toLowerCase()%>/<%=topC.id%>">View Product!</a></button>
                 </div>
                 <%}else{%>
                 <p class="cardtext"><%=topC.short_description%></p>
                 <div class="mix-container">
                 <p class="card-text-container">Price: <%=topC.price%>$</p>
-                <button class="show-more-btn">View Product!</button>
+                <button class="show-more-btn"><a href="http://localhost/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>/<%=type.toLowerCase()%>/<%=topC.id%>">View Product!</a></button>
                 </div>
                 <%}%>
             </div>
@@ -64,17 +64,17 @@
                 <div class="mix-container">
                     <img  src="/images/<%=img.images[0].link %>" class="mix-container" alt="<%=topC.name%>">
                 </div>
-                <%if(topC.short_description.length>=140){%>
+                <% if(topC.short_description.length>=140){%>
                 <p class="cardtext"><%=topC.short_description.substring(0,140)%>...</p>
                 <div class="mix-container">
                 <p class="card-text-container">Price: <%=topC.price%>$</p>
-                <button class="show-more-btn">View Product!</button>
+                <button class="show-more-btn"><a href="http://localhost/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>/<%=type.toLowerCase()%>/<%=topC.id%>">View Product!</a></button>
                 </div>
                 <%}else{%>
                 <p class="cardtext"><%=topC.short_description%></p>
                 <div class="mix-container">
-                <p class="card-text-container">Price: <%=topC.price%>$</p>
-                <button class="show-more-btn">View Product!</button>
+                    <p class="card-text-container">Price: <%=topC.price%>$</p>
+                    <button class="show-more-btn"><a href="http://localhost/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>/<%=type.toLowerCase()%>/<%=topC.id%>">View Product!</a></button>
                 </div>
                 <%}%>
             </div>

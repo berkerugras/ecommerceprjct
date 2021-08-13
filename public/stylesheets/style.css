@@ -3,8 +3,17 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+ul {
+  list-style-type: none;
+}
+
 a {
   color: #841324;
+}
+
+img{
+  border: 3px transparent;
+  border-radius: 0.9rem;
 }
 
 .topnav {
