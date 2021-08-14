@@ -21,14 +21,14 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item active" aria-current="page">Home</li>
-        <li class="breadcrumb-item" aria-current="page"><%=category %></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="http://localhost/categories/<%=varlink%>"><%=category %></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="http://localhost/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>"><%=parentcategory %></a></li>
+        <li class="breadcrumb-item" aria-current="page"><%=type %></li>
 
     </ol>
 </nav>
 <p class="htitle"><%= type %></p>
 <ul class="card-container">
-    <%let a=0%>
-    <%let link=""%>
     <% _.each(items, function(topC) { %>
         <% if (topC.image_groups) { %>
         <%for(let img of topC.image_groups){%>

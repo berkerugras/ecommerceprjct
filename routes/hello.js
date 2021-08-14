@@ -577,7 +577,7 @@ router.get('/women/jewelry/necklaces/:productid',async (req, res, next) => {
             url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
@@ -631,7 +631,7 @@ router.get('/women/accessories/scarves/:productid',async (req, res, next) => {
             title:"Alibazon",
             items:response.data,
             category:"Womens",
-            parentcategory:"Acessories",
+            parentcategory:"Accessories",
             varlink:"women",
             type:"Scarves"
 
@@ -680,7 +680,7 @@ router.get('/women/clothing/dresses/:productid',async (req, res, next) => {
             title:"Alibazon",
             items:response.data,
             category:"Womens",
-            parentcategory:"clothing",
+            parentcategory:"Clothing",
             varlink:"women",
             type:"Dresses"
 
@@ -704,7 +704,7 @@ router.get('/women/clothing/dresses/:productid',async (req, res, next) => {
             title:"Alibazon",
             items:response.data,
             category:"Womens",
-            parentcategory:"clothing",
+            parentcategory:"Clothing",
             varlink:"women",
             type:"Dresses"
 
@@ -729,7 +729,7 @@ router.get('/women/clothing/jackets(%20&%20coats)?/:productid',async (req, res, 
             title:"Alibazon",
             items:response.data,
             category:"Womens",
-            parentcategory:"clothing",
+            parentcategory:"Clothing",
             varlink:"women",
             type:"Jackets & Coats"
 
@@ -753,7 +753,7 @@ router.get('/women/clothing/bottoms/:productid',async (req, res, next) => {
             title:"Alibazon",
             items:response.data,
             category:"Womens",
-            parentcategory:"clothing",
+            parentcategory:"Clothing",
             varlink:"women",
             type:"Bottoms"
 
@@ -777,7 +777,7 @@ router.get('/women/clothing/tops/:productid',async (req, res, next) => {
             title:"Alibazon",
             items:response.data,
             category:"Womens",
-            parentcategory:"clothing",
+            parentcategory:"Clothing",
             varlink:"women",
             type:"Tops"
 
@@ -801,7 +801,7 @@ router.get('/men/accessories/luggage(s)?/:productid',async (req, res, next) => {
             title:"Alibazon",
             items:response.data,
             category:"Mens",
-            parentcategory:"accessories",
+            parentcategory:"Accessories",
             varlink:"men",
             type:"Luggages"
 
@@ -825,7 +825,7 @@ router.get('/men/accessories/glove(s)?/:productid',async (req, res, next) => {
             title:"Alibazon",
             items:response.data,
             category:"Mens",
-            parentcategory:"accessories",
+            parentcategory:"Accessories",
             varlink:"men",
             type:"Gloves"
 
@@ -849,7 +849,7 @@ router.get('/men/accessories/tie(s)?/:productid',async (req, res, next) => {
             title:"Alibazon",
             items:response.data,
             category:"Mens",
-            parentcategory:"accessories",
+            parentcategory:"Accessories",
             varlink:"men",
             type:"Ties"
 
@@ -873,7 +873,7 @@ router.get('/men/clothing/dress(%20shirts)?/:productid',async (req, res, next) =
             title:"Alibazon",
             items:response.data,
             category:"Mens",
-            parentcategory:"clothing",
+            parentcategory:"Clothing",
             varlink:"men",
             type:"Dress Shirts"
 
@@ -897,7 +897,7 @@ router.get('/men/clothing/short(s)?/:productid',async (req, res, next) => {
             title:"Alibazon",
             items:response.data,
             category:"Mens",
-            parentcategory:"clothing",
+            parentcategory:"Clothing",
             varlink:"men",
             type:"Shorts"
 
@@ -921,7 +921,7 @@ router.get('/men/clothing/jackets(%20&%20coats)?/:productid',async (req, res, ne
             title:"Alibazon",
             items:response.data,
             category:"Mens",
-            parentcategory:"clothing",
+            parentcategory:"Clothing",
             varlink:"men",
             type:"Jackets & Coats"
 
@@ -946,7 +946,7 @@ router.get('/men/clothing/pant(s)?/:productid',async (req, res, next) => {
             title:"Alibazon",
             items:response.data,
             category:"Mens",
-            parentcategory:"clothing",
+            parentcategory:"Clothing",
             varlink:"men",
             type:"Pants"
 
@@ -970,7 +970,7 @@ router.get('/men/clothing/suit(s)?/:productid',async (req, res, next) => {
             title:"Alibazon",
             items:response.data,
             category:"Mens",
-            parentcategory:"clothing",
+            parentcategory:"Clothing",
             varlink:"men",
             type:"Suits"
 
