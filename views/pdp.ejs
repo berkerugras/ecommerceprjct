@@ -4,6 +4,7 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="/stylesheets/product-detail.style.css"/>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/currency-picker.style.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
@@ -24,7 +25,6 @@
         <li class="breadcrumb-item active" aria-current="page"><a href="http://localhost/categories/<%=varlink%>"><%=category %></a></li>
         <li class="breadcrumb-item active" aria-current="page"><a href="http://localhost/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>"><%=parentcategory %></a></li>
         <li class="breadcrumb-item" aria-current="page"><%=type %></li>
-
     </ol>
 </nav>
 <ul >
@@ -39,12 +39,18 @@
             <div class="text-container">
                 <span class="h-title"><%= topC.name %></span>
                 <p class="description"><%= topC.long_description %></p>
+                <div class="footer">
+                    <button class="button">Add to Cart</button>
+                    <select name="currency" class="selector" id="currencySelector">
+                        <option value="usd">USD</option>
+                        <option value="eur">EURO</option>
+                        <option value="try">TRY</option>
+                        <option value="gbp">GBP</option>
+                    </select>
+                    <div class="price" id="price"><%=topC.price%></div>
+                </div>
             </div>
-
-
         </div>
-        <%console.log(items.name)%>
-        <%console.log(topC.page_description)%>
         <%}%>
         <%}%>
     <%}%>
@@ -55,5 +61,27 @@
         <a class="title"><%= title%> @2021</a>
     </div>
 </footer>
+
+<script>
+    var selector = document.getElementById("currencySelector");
+    var currencyElements = document.getElementById("price");
+
+    var usdChangeRate = {
+        eur: 1.4407,
+        gbp: 1.6424,
+        usd: 1.0,
+        try: 0.12
+    };
+    var oldPrice=currencyElements.innerText
+    oldPrice=parseFloat(oldPrice)
+    selector.onchange = function () {
+        console.log(selector.value)
+        if(selector.value.toLowerCase() in usdChangeRate) {
+            var temp=selector.value;
+            document.getElementById("price").innerText = Math.round(oldPrice/usdChangeRate[temp]).toString()
+        }
+    };
+
+</script>
 </body>
 </html>
