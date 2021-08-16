@@ -553,7 +553,7 @@ router.get('/women/jewelry/earrings/:productid',async (req, res, next) => {
             url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
@@ -594,29 +594,7 @@ router.get('/women/jewelry/necklaces/:productid',async (req, res, next) => {
 
 })
 
-router.get('/women/jewelry/necklaces/:productid',async (req, res, next) => {
-    try {
-        req.params.productid
-        const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
-            method: "get",
-        });
-        res.status(200).render("products",{
-            _:_,
-            title:"Alibazon",
-            items:response.data,
-            category:"Womens",
-            parentcategory:"Jewelry",
-            varlink:"women",
-            type:"Necklaces"
 
-
-        })
-    } catch (err) {
-        res.status(500).json({message: err});
-    }
-
-})
 
 
 router.get('/women/accessories/scarves/:productid',async (req, res, next) => {
@@ -772,7 +750,7 @@ router.get('/women/clothing/tops/:productid',async (req, res, next) => {
             url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
