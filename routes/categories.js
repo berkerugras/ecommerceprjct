@@ -4,7 +4,8 @@ const router = express.Router();
 const _         = require("underscore");
 const axios = require("axios").create({baseUrl: "https://osf-digital-backend-academy.herokuapp.com/api/"});
 const slug=require("slugify")
-
+require('dotenv').config();
+const api_key=process.env.API_KEY;
 // function asyncHandler(cb){
 //     return async (req, res, next)=>{
 //         try {
@@ -27,7 +28,7 @@ router.get('/',async function (req, res, next) {
 router.get('/men',async function (req, res, next) {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/categories/parent/mens?secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/categories/parent/mens?secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("hello", {
@@ -51,7 +52,7 @@ router.get('/men',async function (req, res, next) {
 router.get('/women',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/categories/parent/womens?secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/categories/parent/womens?secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("hello",{
@@ -71,7 +72,7 @@ router.get('/women',async (req, res, next) => {
 router.get('/women/clothing',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/categories/parent/womens-clothing?secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/categories/parent/womens-clothing?secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("subcategory",{
@@ -92,7 +93,7 @@ router.get('/women/clothing',async (req, res, next) => {
 router.get('/women/jewelry',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/categories/parent/womens-jewelry?secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/categories/parent/womens-jewelry?secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("subcategory",{
@@ -115,7 +116,7 @@ router.get('/women/jewelry',async (req, res, next) => {
 router.get('/women/accessories',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/categories/parent/womens-accessories?secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/categories/parent/womens-accessories?secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("subcategory",{
@@ -138,7 +139,7 @@ router.get('/women/accessories',async (req, res, next) => {
 router.get('/men/clothing',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/categories/parent/mens-clothing?secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/categories/parent/mens-clothing?secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("subcategory",{
@@ -159,7 +160,7 @@ router.get('/men/clothing',async (req, res, next) => {
 router.get('/men/accessories',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/categories/parent/mens-accessories?secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/categories/parent/mens-accessories?secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("subcategory",{
@@ -180,7 +181,7 @@ router.get('/men/accessories',async (req, res, next) => {
 router.get('/women/jewelry/earrings',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-jewelry-earrings&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-jewelry-earrings&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -202,7 +203,7 @@ router.get('/women/jewelry/earrings',async (req, res, next) => {
 router.get('/women/jewelry/necklaces',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-jewelry-necklaces&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-jewelry-necklaces&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -224,7 +225,7 @@ router.get('/women/jewelry/necklaces',async (req, res, next) => {
 router.get('/women/accessories/scarves',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-accessories-scarves&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-accessories-scarves&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -248,7 +249,7 @@ router.get('/women/accessories/scarves',async (req, res, next) => {
 router.get('/women/accessories/shoes',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-accessories-shoes&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-accessories-shoes&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -271,7 +272,7 @@ router.get('/women/accessories/shoes',async (req, res, next) => {
 router.get('/women/clothing/dresses',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-clothing-dresses&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-clothing-dresses&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -294,7 +295,7 @@ router.get('/women/clothing/dresses',async (req, res, next) => {
 router.get('/women/clothing/jackets(%20&%20coats)?',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-clothing-jackets&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-clothing-jackets&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -317,7 +318,7 @@ router.get('/women/clothing/jackets(%20&%20coats)?',async (req, res, next) => {
 router.get('/women/clothing/bottom(s)?',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-clothing-bottoms&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-clothing-bottoms&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -340,7 +341,7 @@ router.get('/women/clothing/bottom(s)?',async (req, res, next) => {
 router.get('/women/clothing/top(s)?',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-clothing-tops&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=womens-clothing-tops&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -363,7 +364,7 @@ router.get('/women/clothing/top(s)?',async (req, res, next) => {
 router.get('/men/accessories/luggage(s)?',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-accessories-luggage&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-accessories-luggage&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -386,7 +387,7 @@ router.get('/men/accessories/luggage(s)?',async (req, res, next) => {
 router.get('/men/accessories/glove(s)?',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-accessories-gloves&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-accessories-gloves&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -409,7 +410,7 @@ router.get('/men/accessories/glove(s)?',async (req, res, next) => {
 router.get('/men/accessories/tie(s)?',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-accessories-ties&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-accessories-ties&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -432,7 +433,7 @@ router.get('/men/accessories/tie(s)?',async (req, res, next) => {
 router.get('/men/clothing/dress(%20shirts)?',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-clothing-dress-shirts&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-clothing-dress-shirts&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -457,7 +458,7 @@ router.get('/men/clothing/dress(%20shirts)?',async (req, res, next) => {
 router.get('/men/clothing/short(s)?',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-clothing-shorts&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-clothing-shorts&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -480,7 +481,7 @@ router.get('/men/clothing/short(s)?',async (req, res, next) => {
 router.get('/men/clothing/jackets(%20&%20coats)?',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-clothing-jackets&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-clothing-jackets&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -503,7 +504,7 @@ router.get('/men/clothing/jackets(%20&%20coats)?',async (req, res, next) => {
 router.get('/men/clothing/pant(s)?',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-clothing-pants&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-clothing-pants&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -526,7 +527,7 @@ router.get('/men/clothing/pant(s)?',async (req, res, next) => {
 router.get('/men/clothing/suit(s)?',async (req, res, next) => {
     try {
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-clothing-suits&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id=mens-clothing-suits&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -550,7 +551,7 @@ router.get('/women/jewelry/earrings/:productid',async (req, res, next) => {
     try {
        req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("pdp",{
@@ -574,7 +575,7 @@ router.get('/women/jewelry/necklaces/:productid',async (req, res, next) => {
     try {
         req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("pdp",{
@@ -601,7 +602,7 @@ router.get('/women/accessories/scarves/:productid',async (req, res, next) => {
     try {
         req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -626,7 +627,7 @@ router.get('/women/accessories/shoes/:productid',async (req, res, next) => {
     try {
         req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -650,7 +651,7 @@ router.get('/women/clothing/dresses/:productid',async (req, res, next) => {
     try {
         req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -674,7 +675,7 @@ router.get('/women/clothing/dresses/:productid',async (req, res, next) => {
     try {
         req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -699,7 +700,7 @@ router.get('/women/clothing/jackets(%20&%20coats)?/:productid',async (req, res, 
     try {
         req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -723,10 +724,10 @@ router.get('/women/clothing/bottoms/:productid',async (req, res, next) => {
     try {
         req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
@@ -747,7 +748,7 @@ router.get('/women/clothing/tops/:productid',async (req, res, next) => {
     try {
         req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("pdp",{
@@ -771,10 +772,10 @@ router.get('/men/accessories/luggage(s)?/:productid',async (req, res, next) => {
     try {
         req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
@@ -795,10 +796,10 @@ router.get('/men/accessories/glove(s)?/:productid',async (req, res, next) => {
     try {
         req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
@@ -819,7 +820,7 @@ router.get('/men/accessories/tie(s)?/:productid',async (req, res, next) => {
     try {
         req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -843,7 +844,7 @@ router.get('/men/clothing/dress(%20shirts)?/:productid',async (req, res, next) =
     try {
         req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -867,7 +868,7 @@ router.get('/men/clothing/short(s)?/:productid',async (req, res, next) => {
     try {
         req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -891,7 +892,7 @@ router.get('/men/clothing/jackets(%20&%20coats)?/:productid',async (req, res, ne
     try {
         req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -916,7 +917,7 @@ router.get('/men/clothing/pant(s)?/:productid',async (req, res, next) => {
     try {
         req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{
@@ -940,7 +941,7 @@ router.get('/men/clothing/suit(s)?/:productid',async (req, res, next) => {
     try {
         req.params.productid
         const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey=$2a$08$O13PKOzfgc0KjRSX5fxP4uCN3S1SUExNGnSrLR7FDkKJN7MdkSfsm",
+            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
         res.status(200).render("products",{

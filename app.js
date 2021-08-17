@@ -14,7 +14,7 @@ const Tracing = require("@sentry/tracing");
 
 //routes
 const indexRouter = require('./routes/index');
-const helloRouter = require('./routes/hello');
+const categoryRouter = require('./routes/categories');
 
 
 Sentry.init({
@@ -47,7 +47,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // App routes
 app.use("/"     , indexRouter);
-app.use("/categories", helloRouter);
+app.use("/categories", categoryRouter);
 
 
 

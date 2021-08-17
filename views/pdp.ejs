@@ -28,13 +28,15 @@
     </ol>
 </nav>
 <div>
+   <%let a=0%>
     <% _.each(items, function(topC) { %>
+        <%console.log(a)%>
         <% if (topC.image_groups) { %>
-            <%for(let img of topC.image_groups){%>
+        <%for(let img of topC.image_groups){%>
         <%if(img.view_type==="large" && !img.variation_value){%>
         <div class="detail-container">
             <div class="img-container">
-                <img src="/images/<%= img.images[0].link %>" alt="<%=topC.name%>">
+                <img id="img" src="/images/<%= img.images[0].link %>" alt="<%=topC.name%>">
             </div>
             <div class="text-container">
                 <span class="h-title"><%= topC.name %></span>
@@ -54,32 +56,35 @@
             <%}%>
             <%}%>
 
+
             <div class="variant" id="variant">
-            <p class="var-title">Product Variants:</p>
-            <%for(let va of topC.variation_attributes){%>
-            <p class="subtitle"><b><%=va.name%></b></p>
-                <%if(va.id==='color'){%>
+                <p class="var-title">Product Variants:</p>
+                <%for(let va of topC.variation_attributes){%>
+                <p class="subtitle"><b><%=va.name%></b></p>
+                <%if(va.name==='Color'){%>
                 <div class="varColor" id="varColor">
                     <%for(let nm of va.values){%>
-                    <button value="<%=nm.value%>" class="varButtonColor" id="var-button"><%=nm.name%></button>
+                    <%for(let img of topC.image_groups){%>
+                    <%if(img.view_type==="large" && img.variation_value===nm.value){%>
+                    <button name="<%=nm.value%>" value="/images/<%=img.images[0].link%>" class="varButtonColor" id="var-button"><%=nm.name%></button>
+                    <%}%>
+                    <%}%>
                     <%}%>
                 </div>
                 <%}%>
-                <%if(va.id==='size'){%>
+                <%if(va.name==='Size'){%>
                 <div class="varSize" id="varSize">
                     <%for(let nm of va.values){%>
                     <button value="<%=nm.value%>" class="varButtonSize" id="var-button"><%=nm.name%></button>
                     <%}%>
                 </div>
                 <%}%>
-
-
-            <%}%>
+                <%}%>
+            </div>
         </div>
-        </div>
-
-    <%}%>
+        <%}%>
     <%});%>
+
 </div>
 <footer>
     <div class="botnav">
@@ -113,48 +118,53 @@
             })
         })
     })
-
 </script>
 
 <script>
+    if(document.getElementById("varSize") !==null && document.getElementById("varSize") !==undefined) {
+        var SzbtnContainer = document.getElementById("varSize");
+        var sizeBtns = SzbtnContainer.getElementsByClassName("varButtonSize");
 
-    var SzbtnContainer=document.getElementById("varSize");
-    var sizeBtns  = SzbtnContainer.getElementsByClassName("varButtonSize");
+        for (var j = 0; j < sizeBtns.length; j++) {
+            console.log("ben size'ım")
+            sizeBtns[j].addEventListener("click", function() {
+                var current = SzbtnContainer.getElementsByClassName("selected");
 
-    var btnContainer = document.getElementById("varColor");
-    var colorBtns = btnContainer.getElementsByClassName("varButtonColor");
+                if (current.length > 0) {
+                    current[0].className = current[0].className.replace(" selected", "");
+                }
 
-    for (var i = 0; i < colorBtns.length; i++) {
-        console.log("ben colorum")
-        colorBtns[i].addEventListener("click", function() {
-            console.log(1)
-            var current = btnContainer.getElementsByClassName("selected");
-            if (current.length > 0) {
-                current[0].className = current[0].className.replace(" selected", "");
-            }
+                this.className += " selected";
+            });
+        }
 
-            // Add the active class to the current/clicked button
-            this.className += " selected";
-        });
     }
 
-    for (var j = 0; j < sizeBtns.length; j++) {
-        console.log("ben size'ım")
-        sizeBtns[j].addEventListener("click", function() {
-            console.log(2)
-            var current = SzbtnContainer.getElementsByClassName("selected");
+    if(document.getElementById("varColor") !==null && document.getElementById("varColor") !==undefined) {
+        var btnContainer = document.getElementById("varColor");
+        var colorBtns = btnContainer.getElementsByClassName("varButtonColor");
 
-            if (current.length > 0) {
-                current[0].className = current[0].className.replace(" selected", "");
-            }
+        for (var i = 0; i < colorBtns.length; i++) {
 
-            this.className += " selected";
-        });
+            colorBtns[i].addEventListener("click", function () {
+                var current = btnContainer.getElementsByClassName("selected");
+
+                if (current.length > 0) {
+                    current[0].className = current[0].className.replace(" selected", "");
+                }
+
+
+
+                this.className += " selected";
+                document.getElementById("img").src=current[0].value
+
+
+            });
+        }
     }
+
 
 </script>
-
-
 
 </body>
 </html>
