@@ -605,7 +605,7 @@ router.get('/women/accessories/scarves/:productid',async (req, res, next) => {
             url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
@@ -630,7 +630,7 @@ router.get('/women/accessories/shoes/:productid',async (req, res, next) => {
             url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
@@ -654,7 +654,7 @@ router.get('/women/clothing/dresses/:productid',async (req, res, next) => {
             url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
@@ -678,7 +678,7 @@ router.get('/women/clothing/dresses/:productid',async (req, res, next) => {
             url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
@@ -703,7 +703,7 @@ router.get('/women/clothing/jackets(%20&%20coats)?/:productid',async (req, res, 
             url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
@@ -823,7 +823,7 @@ router.get('/men/accessories/tie(s)?/:productid',async (req, res, next) => {
             url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
@@ -847,7 +847,7 @@ router.get('/men/clothing/dress(%20shirts)?/:productid',async (req, res, next) =
             url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
@@ -871,7 +871,7 @@ router.get('/men/clothing/short(s)?/:productid',async (req, res, next) => {
             url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
@@ -895,7 +895,7 @@ router.get('/men/clothing/jackets(%20&%20coats)?/:productid',async (req, res, ne
             url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
@@ -920,7 +920,7 @@ router.get('/men/clothing/pant(s)?/:productid',async (req, res, next) => {
             url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
@@ -944,7 +944,7 @@ router.get('/men/clothing/suit(s)?/:productid',async (req, res, next) => {
             url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
             method: "get",
         });
-        res.status(200).render("products",{
+        res.status(200).render("pdp",{
             _:_,
             title:"Alibazon",
             items:response.data,
