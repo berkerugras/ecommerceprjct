@@ -32,9 +32,33 @@ router.get('/',async function (req, res, next) {
     // } catch (err) {
     //     res.status(500).json({message: err});
     // }
-})
+});
 
+router.get('/profile',function (req,res,next){
+    if(!req.session.userid){
+        const err=new Error("You are not authorized to view this content!")
+        err.status=403
+        return next(err);
+    }
+    res.status(200).render('profile',{
+        title:"Alibazon",
+        category:"Profile",
+        username:req.session.userName,
+        email:req.session.email
+    })
+});
 
+router.get('/logout',function (req,res,next){
+    if(req.session){
+        req.session.destroy(function (err){
+            if(err){
+                return next(err);
+            }else{
+                return res.redirect('/');
+            }
+        });
+    }
+});
 
 
 module.exports = router;

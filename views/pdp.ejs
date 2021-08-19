@@ -11,13 +11,7 @@
 
 <body>
 <header>
-    <div class="topnav">
-        <a class="title" href="http://localhost/"><%= title%></a>
-        <a href="http://localhost/categories/men">Men</a>
-        <a href="http://localhost/categories/women">Women</a>
-        <a href="http://localhost/auth/signin" class="signin">Sign In</a>
-        <a href="http://localhost/auth/signup" class="signup">Sign Up</a>
-    </div>
+    <%-include('./navbar.ejs')%>
 </header>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -30,7 +24,6 @@
 <div>
    <%let a=0%>
     <% _.each(items, function(topC) { %>
-        <%console.log(a)%>
         <% if (topC.image_groups) { %>
         <%for(let img of topC.image_groups){%>
         <%if(img.view_type==="large" && !img.variation_value){%>
@@ -60,7 +53,6 @@
             <div class="variant" id="variant">
                 <p class="var-title">Product Variants:</p>
                 <%for(let va of topC.variation_attributes){%>
-                <%console.log(va)%>
                 <p class="subtitle"><b><%=va.name%></b></p>
 
                 <%if(va.name==='Color' || va.name==='color'){%>
@@ -139,7 +131,6 @@
         var sizeBtns = SzbtnContainer.getElementsByClassName("varButtonSize");
 
         for (var j = 0; j < sizeBtns.length; j++) {
-            console.log("ben size'ım")
             sizeBtns[j].addEventListener("click", function() {
                 var current = SzbtnContainer.getElementsByClassName("selected");
 
@@ -183,7 +174,6 @@
         for (var k = 0; k < widthBtns.length; k++) {
 
             widthBtns[k].addEventListener("click", function () {
-                console.log("sa")
                 var current = wdbtnContainer.getElementsByClassName("selected");
 
                 if (current.length > 0) {

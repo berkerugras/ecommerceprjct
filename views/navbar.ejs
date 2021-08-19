@@ -1,0 +1,13 @@
+<div class="topnav">
+    <a class="title" href="http://localhost/"><%= title%></a>
+    <a href="http://localhost/categories/men">Men</a>
+    <a href="http://localhost/categories/women">Women</a>
+    <%if(currentUser){%>
+        <a href="http://localhost/profile" class="signin">Profile</a>
+        <a href="/logout" class="signup">Log Out</a>
+
+    <%}else{%>
+        <a href="http://localhost/auth/signin" class="signin">Sign In</a>
+        <a href="http://localhost/auth/signup" class="signup">Sign Up</a>
+    <%}%>
+</div>

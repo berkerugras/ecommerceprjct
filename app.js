@@ -44,8 +44,18 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json());
 app.use(methodOverride())
 app.use(cookieParser("61d333a8-6325-4506-96e7-a180035cc26f"));
-app.use(session());
+app.use(session({
+	secret:"61d333a8-6325-4506-96e7-a180035cc26f",
+	resave:true,
+	saveUninitialized:false
+}));
 app.use(express.static(path.join(__dirname, "public")));
+
+//make user ID available in templates
+app.use(function (req,res,next){
+	res.locals.currentUser=req.session.userid;
+	next();
+})
 
 // App routes
 app.use("/"     , indexRouter);

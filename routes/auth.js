@@ -38,8 +38,10 @@ router.post('/signup',async function (req, res, next) {
                 }
 
                 const response = await axios.post("https://osf-digital-backend-academy.herokuapp.com/api/auth/signup",user);
-                console.log(response.data.token)
-                return res.redirect("/categories/women")
+                req.session.userid=response.data.user._id;
+                req.session.userName=response.data.user.name
+                req.session.email=response.data.user.email;
+                return res.redirect("../profile")
             }
             catch (err){
                 var err=new Error('Couldnt send the data to the end-point');
@@ -80,8 +82,10 @@ router.post('/signin',async function (req, res, next) {
                 }
 
                 const response = await axios.post("https://osf-digital-backend-academy.herokuapp.com/api/auth/signin",user);
-                console.log(response.data.token)
-                return res.redirect("/categories/women")
+                req.session.userid=response.data.user._id;
+                req.session.userName=response.data.user.name
+                req.session.email=response.data.user.email;
+                return res.redirect("../profile")
             }
             catch (err){
                 var err=new Error('Username or password is incorrect');
@@ -89,8 +93,8 @@ router.post('/signin',async function (req, res, next) {
                 return next(err);
             }
         } else {
-            var err = new Error('All fields required');
-            err.status = 400;
+            var err = new Error('Email and password are required');
+            err.status = 401;
             return next(err);
         }
     } catch (err) {

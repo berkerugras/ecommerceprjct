@@ -9,13 +9,7 @@
 
     <body>
     <header>
-        <div class="topnav">
-            <a class="title" href="http://localhost/"><%= title%></a>
-            <a href="http://localhost/categories/men">Men</a>
-            <a href="http://localhost/categories/women">Women</a>
-            <a href="http://localhost/auth/signin" class="signin">Sign In</a>
-            <a href="http://localhost/auth/signup" class="signup">Sign Up</a>
-        </div>
+        <%-include('./navbar.ejs')%>
     </header>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
