@@ -15,8 +15,8 @@
         <a class="title" href="http://localhost/"><%= title%></a>
         <a href="http://localhost/categories/men">Men</a>
         <a href="http://localhost/categories/women">Women</a>
-        <a href="#signin" class="signin">Sign In</a>
-        <a href="#signup" class="signup">Sign Up</a>
+        <a href="http://localhost/auth/signin" class="signin">Sign In</a>
+        <a href="http://localhost/auth/signup" class="signup">Sign Up</a>
     </div>
 </header>
 <nav aria-label="breadcrumb">
@@ -60,11 +60,14 @@
             <div class="variant" id="variant">
                 <p class="var-title">Product Variants:</p>
                 <%for(let va of topC.variation_attributes){%>
+                <%console.log(va)%>
                 <p class="subtitle"><b><%=va.name%></b></p>
-                <%if(va.name==='Color'){%>
+
+                <%if(va.name==='Color' || va.name==='color'){%>
                 <div class="varColor" id="varColor">
                     <%for(let nm of va.values){%>
                     <%for(let img of topC.image_groups){%>
+
                     <%if(img.view_type==="large" && img.variation_value===nm.value){%>
                     <button name="<%=nm.value%>" value="/images/<%=img.images[0].link%>" class="varButtonColor" id="var-button"><%=nm.name%></button>
                     <%}%>
@@ -72,13 +75,23 @@
                     <%}%>
                 </div>
                 <%}%>
-                <%if(va.name==='Size'){%>
+
+                <%if(va.name==='Size' || va.name==='size'){%>
                 <div class="varSize" id="varSize">
                     <%for(let nm of va.values){%>
                     <button value="<%=nm.value%>" class="varButtonSize" id="var-button"><%=nm.name%></button>
                     <%}%>
                 </div>
                 <%}%>
+
+                <%if(va.name==='Width' || va.name==='width'){%>
+                <div class="varWidth" id="varWidth">
+                    <%for(let nm of va.values){%>
+                    <button value="<%=nm.value%>" class="varButtonWidth" id="var-button"><%=nm.name%></button>
+                    <%}%>
+                </div>
+                <%}%>
+
                 <%}%>
             </div>
         </div>
@@ -163,6 +176,25 @@
         }
     }
 
+    if(document.getElementById("varWidth") !==null && document.getElementById("varWidth") !==undefined) {
+        var wdbtnContainer = document.getElementById("varWidth");
+        var widthBtns = wdbtnContainer.getElementsByClassName("varButtonWidth");
+
+        for (var k = 0; k < widthBtns.length; k++) {
+
+            widthBtns[k].addEventListener("click", function () {
+                console.log("sa")
+                var current = wdbtnContainer.getElementsByClassName("selected");
+
+                if (current.length > 0) {
+                    current[0].className = current[0].className.replace(" selected", "");
+                }
+
+                this.className += " selected";
+
+            });
+        }
+    }
 
 </script>
 

@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const _         = require("underscore");
-const mdbClient = require('mongodb').MongoClient;
-const axios = require("axios").create({baseUrl: "https://osf-digital-backend-academy.herokuapp.com/api/"});
-const records  =require('../public/javascripts/records');
+
 
 // function asyncHandler(cb){
 //     return async (req, res, next)=>{

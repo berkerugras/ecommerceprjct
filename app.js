@@ -15,7 +15,7 @@ const Tracing = require("@sentry/tracing");
 //routes
 const indexRouter = require('./routes/index');
 const categoryRouter = require('./routes/categories');
-
+const authRouter=require('./routes/auth');
 
 Sentry.init({
 	dsn: "https://ca7d3717494b4e3190372605225f86dc@o943735.ingest.sentry.io/5892672",
@@ -39,6 +39,8 @@ app.set("view engine", "ejs");
 app.use(logger("dev"));
 app.use(Sentry.Handlers.requestHandler());
 app.use(Sentry.Handlers.tracingHandler());
+
+app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json());
 app.use(methodOverride())
 app.use(cookieParser("61d333a8-6325-4506-96e7-a180035cc26f"));
@@ -48,7 +50,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // App routes
 app.use("/"     , indexRouter);
 app.use("/categories", categoryRouter);
-
+app.use("/auth",authRouter);
 
 
 
@@ -62,7 +64,8 @@ app.use((err,req,res,next)=>{
 	res.status(err.status||500);
 	res.render('error.ejs',{
 		message: err.message,
-		error:err
+		error:err,
+		title:'Alibazon'
 
 
 	})

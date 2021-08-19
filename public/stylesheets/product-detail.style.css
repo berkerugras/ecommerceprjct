@@ -4,7 +4,7 @@
 
 .detail-container {
     margin: auto;
-    height: 700px;
+    height: 100%;
     max-width: 85%;
     background: white;
     border: 1px solid #cfcfe1;
@@ -161,6 +161,13 @@
     text-align: center;
 }
 
+.varButtonWidth{
+    font-size: 1rem;
+    border: 3px solid #d234a0;
+    border-radius: 0.3rem;
+    background-color: white;
+    text-align: center;
+}
 
 
 .selected, .varButtonColor:hover {
@@ -169,6 +176,11 @@
 }
 
 .selected, .varButtonSize:hover {
+    background-color: #666;
+    color: white;
+}
+
+.selected, .varButtonWidth:hover {
     background-color: #666;
     color: white;
 }
