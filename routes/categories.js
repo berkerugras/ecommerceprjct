@@ -561,7 +561,8 @@ router.get('/women/jewelry/earrings/:productid',async (req, res, next) => {
             category:"Womens",
             parentcategory:"Jewelry",
             varlink:"women",
-            type:"Earrings"
+            type:"Earrings",
+            variants:response.data[0].variants
 
 
         })
@@ -585,7 +586,8 @@ router.get('/women/jewelry/necklaces/:productid',async (req, res, next) => {
             category:"Womens",
             parentcategory:"Jewelry",
             varlink:"women",
-            type:"Necklaces"
+            type:"Necklaces",
+            variants:response.data[0].variants
 
 
         })
@@ -612,7 +614,8 @@ router.get('/women/accessories/scarves/:productid',async (req, res, next) => {
             category:"Womens",
             parentcategory:"Accessories",
             varlink:"women",
-            type:"Scarves"
+            type:"Scarves",
+            variants:response.data[0].variants
 
 
         })
@@ -637,7 +640,8 @@ router.get('/women/accessories/shoes/:productid',async (req, res, next) => {
             category:"Womens",
             parentcategory:"Accessories",
             varlink:"women",
-            type:"Shoes"
+            type:"Shoes",
+            variants:response.data[0].variants
 
 
         })
@@ -661,7 +665,8 @@ router.get('/women/clothing/dresses/:productid',async (req, res, next) => {
             category:"Womens",
             parentcategory:"Clothing",
             varlink:"women",
-            type:"Dresses"
+            type:"Dresses",
+            variants:response.data[0].variants
 
 
         })
@@ -671,29 +676,6 @@ router.get('/women/clothing/dresses/:productid',async (req, res, next) => {
 
 })
 
-router.get('/women/clothing/dresses/:productid',async (req, res, next) => {
-    try {
-        req.params.productid
-        const response = await axios({
-            url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
-            method: "get",
-        });
-        res.status(200).render("pdp",{
-            _:_,
-            title:"Alibazon",
-            items:response.data,
-            category:"Womens",
-            parentcategory:"Clothing",
-            varlink:"women",
-            type:"Dresses"
-
-
-        })
-    } catch (err) {
-        res.status(500).json({message: err});
-    }
-
-})
 
 
 router.get('/women/clothing/jackets(%20&%20coats)?/:productid',async (req, res, next) => {
@@ -710,7 +692,8 @@ router.get('/women/clothing/jackets(%20&%20coats)?/:productid',async (req, res, 
             category:"Womens",
             parentcategory:"Clothing",
             varlink:"women",
-            type:"Jackets & Coats"
+            type:"Jackets & Coats",
+            variants:response.data[0].variants
 
 
         })
@@ -734,7 +717,8 @@ router.get('/women/clothing/bottoms/:productid',async (req, res, next) => {
             category:"Womens",
             parentcategory:"Clothing",
             varlink:"women",
-            type:"Bottoms"
+            type:"Bottoms",
+            variants:response.data[0].variants
 
 
         })
@@ -758,9 +742,8 @@ router.get('/women/clothing/tops/:productid',async (req, res, next) => {
             category:"Womens",
             parentcategory:"Clothing",
             varlink:"women",
-            type:"Tops"
-
-
+            type:"Tops",
+            variants:response.data[0].variants
         })
     } catch (err) {
         res.status(500).json({message: err});
@@ -782,7 +765,8 @@ router.get('/men/accessories/luggage(s)?/:productid',async (req, res, next) => {
             category:"Mens",
             parentcategory:"Accessories",
             varlink:"men",
-            type:"Luggages"
+            type:"Luggages",
+            variants:response.data[0].variants
 
 
         })
@@ -806,7 +790,8 @@ router.get('/men/accessories/glove(s)?/:productid',async (req, res, next) => {
             category:"Mens",
             parentcategory:"Accessories",
             varlink:"men",
-            type:"Gloves"
+            type:"Gloves",
+            variants:response.data[0].variants
 
 
         })
@@ -830,7 +815,8 @@ router.get('/men/accessories/tie(s)?/:productid',async (req, res, next) => {
             category:"Mens",
             parentcategory:"Accessories",
             varlink:"men",
-            type:"Ties"
+            type:"Ties",
+            variants:response.data[0].variants
 
 
         })
@@ -854,7 +840,8 @@ router.get('/men/clothing/dress(%20shirts)?/:productid',async (req, res, next) =
             category:"Mens",
             parentcategory:"Clothing",
             varlink:"men",
-            type:"Dress Shirts"
+            type:"Dress Shirts",
+            variants:response.data[0].variants
 
 
         })
@@ -878,7 +865,8 @@ router.get('/men/clothing/short(s)?/:productid',async (req, res, next) => {
             category:"Mens",
             parentcategory:"Clothing",
             varlink:"men",
-            type:"Shorts"
+            type:"Shorts",
+            variants:response.data[0].variants
 
 
         })
@@ -902,7 +890,8 @@ router.get('/men/clothing/jackets(%20&%20coats)?/:productid',async (req, res, ne
             category:"Mens",
             parentcategory:"Clothing",
             varlink:"men",
-            type:"Jackets & Coats"
+            type:"Jackets & Coats",
+            variants:response.data[0].variants
 
 
         })
@@ -927,7 +916,8 @@ router.get('/men/clothing/pant(s)?/:productid',async (req, res, next) => {
             category:"Mens",
             parentcategory:"Clothing",
             varlink:"men",
-            type:"Pants"
+            type:"Pants",
+            variants:response.data[0].variants
 
 
         })
@@ -951,7 +941,8 @@ router.get('/men/clothing/suit(s)?/:productid',async (req, res, next) => {
             category:"Mens",
             parentcategory:"Clothing",
             varlink:"men",
-            type:"Suits"
+            type:"Suits",
+            variants:response.data[0].variants
 
 
         })

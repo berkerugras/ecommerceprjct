@@ -22,7 +22,6 @@
     </ol>
 </nav>
 <div>
-   <%let a=0%>
     <% _.each(items, function(topC) { %>
         <% if (topC.image_groups) { %>
         <%for(let img of topC.image_groups){%>
@@ -35,7 +34,9 @@
                 <span class="h-title"><%= topC.name %></span>
                 <p class="description"><%= topC.long_description %></p>
                 <div class="footer">
-                    <button class="button">Add to Cart</button>
+                    <form action="#" method="post">
+                        <button type="submit" class="button">Add to Cart</button>
+                    </form>
                     <select name="currency" class="selector" id="currencySelector">
                         <option value="usd">USD</option>
                         <option value="eur">EURO</option>
@@ -54,14 +55,12 @@
                 <p class="var-title">Product Variants:</p>
                 <%for(let va of topC.variation_attributes){%>
                 <p class="subtitle"><b><%=va.name%></b></p>
-
                 <%if(va.name==='Color' || va.name==='color'){%>
                 <div class="varColor" id="varColor">
                     <%for(let nm of va.values){%>
                     <%for(let img of topC.image_groups){%>
-
                     <%if(img.view_type==="large" && img.variation_value===nm.value){%>
-                    <button name="<%=nm.value%>" value="/images/<%=img.images[0].link%>" class="varButtonColor" id="var-button"><%=nm.name%></button>
+                    <button  name="<%=nm.value%>" value="/images/<%=img.images[0].link%>" class="varButtonColor" id="var-button"><%=nm.name%></button>
                     <%}%>
                     <%}%>
                     <%}%>
@@ -71,7 +70,7 @@
                 <%if(va.name==='Size' || va.name==='size'){%>
                 <div class="varSize" id="varSize">
                     <%for(let nm of va.values){%>
-                    <button value="<%=nm.value%>" class="varButtonSize" id="var-button"><%=nm.name%></button>
+                    <button value="<%=nm.value%>" class="varButtonSize" id="var-button" disabled><%=nm.name%></button>
                     <%}%>
                 </div>
                 <%}%>
@@ -79,7 +78,7 @@
                 <%if(va.name==='Width' || va.name==='width'){%>
                 <div class="varWidth" id="varWidth">
                     <%for(let nm of va.values){%>
-                    <button value="<%=nm.value%>" class="varButtonWidth" id="var-button"><%=nm.name%></button>
+                    <button value="<%=nm.value%>" class="varButtonWidth" id="var-button" disabled><%=nm.name%></button>
                     <%}%>
                 </div>
                 <%}%>
@@ -125,68 +124,118 @@
     })
 </script>
 
+
+
+
 <script>
-    if(document.getElementById("varSize") !==null && document.getElementById("varSize") !==undefined) {
-        var SzbtnContainer = document.getElementById("varSize");
-        var sizeBtns = SzbtnContainer.getElementsByClassName("varButtonSize");
+    var variants= '<%-JSON.stringify(variants)%>';
+    varObj=JSON.parse(variants)
 
-        for (var j = 0; j < sizeBtns.length; j++) {
-            sizeBtns[j].addEventListener("click", function() {
-                var current = SzbtnContainer.getElementsByClassName("selected");
-
-                if (current.length > 0) {
-                    current[0].className = current[0].className.replace(" selected", "");
+    function sizeChanger(current){
+        let a = 0;
+        for (let i = 0; i < varObj.length; i++) {
+            if (current[0].name === varObj[i].variation_values.color) {
+                console.log(a)
+                if (a === 0) {
+                    $('#varSize button').remove()
                 }
+                $('#varSize').append(`<button  value="${varObj[i].variation_values.size}" class="varButtonSize" id="var-button">${varObj[i].variation_values.size}</button>`)
+                a = a + 1;
 
-                this.className += " selected";
-            });
-        }
+            }
 
-    }
-
-    if(document.getElementById("varColor") !==null && document.getElementById("varColor") !==undefined) {
-        var btnContainer = document.getElementById("varColor");
-        var colorBtns = btnContainer.getElementsByClassName("varButtonColor");
-
-        for (var i = 0; i < colorBtns.length; i++) {
-
-            colorBtns[i].addEventListener("click", function () {
-                var current = btnContainer.getElementsByClassName("selected");
-
-                if (current.length > 0) {
-                    current[0].className = current[0].className.replace(" selected", "");
-                }
-
-
-
-                this.className += " selected";
-                document.getElementById("img").src=current[0].value
-
-
-            });
         }
     }
 
-    if(document.getElementById("varWidth") !==null && document.getElementById("varWidth") !==undefined) {
-        var wdbtnContainer = document.getElementById("varWidth");
-        var widthBtns = wdbtnContainer.getElementsByClassName("varButtonWidth");
-
-        for (var k = 0; k < widthBtns.length; k++) {
-
-            widthBtns[k].addEventListener("click", function () {
-                var current = wdbtnContainer.getElementsByClassName("selected");
-
-                if (current.length > 0) {
-                    current[0].className = current[0].className.replace(" selected", "");
+    function widthChanger(sizeData,color){
+        let a = 0;
+        for (let i = 0; i < varObj.length; i++) {
+            console.log(sizeData[0].value)
+            if (color === varObj[i].variation_values.color && sizeData[0].value===varObj[i].variation_values.size) {
+                console.log(a)
+                if (a === 0) {
+                    $('#varWidth button').remove()
                 }
 
-                this.className += " selected";
+                $('#varWidth').append(`<button  value="${varObj[i].variation_values.width}" class="varButtonWidth" id="var-button">${varObj[i].variation_values.width}</button>`)
+                a = a + 1;
 
-            });
+            }
+
         }
     }
+
+    function SizeSelect(colorData) {
+        var color=colorData;
+        if (document.getElementById("varSize") !== null && document.getElementById("varSize") !== undefined) {
+            console.log("sizedayım")
+            var SzbtnContainer = document.getElementById("varSize");
+            var sizeBtns = SzbtnContainer.getElementsByClassName("varButtonSize");
+            for (var j = 0; j < sizeBtns.length; j++) {
+                sizeBtns[j].addEventListener("click", function () {
+                    console.log("algıladım")
+                    var current = SzbtnContainer.getElementsByClassName("selected");
+
+                    if (current.length > 0) {
+                        current[0].className = current[0].className.replace(" selected", "");
+                    }
+
+                    this.className += " selected";
+                    if(document.getElementById("varWidth") !== null && document.getElementById("varWidth") !== undefined) {
+                        widthChanger(current, color)
+                        WidthSelect();
+                    }
+                });
+            }
+
+        }
+    }
+
+    function WidthSelect() {
+        if (document.getElementById("varWidth") !== null && document.getElementById("varWidth") !== undefined) {
+            var wdbtnContainer = document.getElementById("varWidth");
+            var widthBtns = wdbtnContainer.getElementsByClassName("varButtonWidth");
+
+            for (var k = 0; k < widthBtns.length; k++) {
+
+                widthBtns[k].addEventListener("click", function () {
+                    var current = wdbtnContainer.getElementsByClassName("selected");
+
+                    if (current.length > 0) {
+                        current[0].className = current[0].className.replace(" selected", "");
+                    }
+
+                    this.className += " selected";
+
+                });
+            }
+        }
+    }
+
+        if (document.getElementById("varColor") !== null && document.getElementById("varColor") !== undefined) {
+            var btnContainer = document.getElementById("varColor");
+            var colorBtns = btnContainer.getElementsByClassName("varButtonColor");
+            console.log(varObj[0].variation_values.color)
+            console.log(varObj[1])
+            for (var i = 0; i < colorBtns.length; i++) {
+
+                colorBtns[i].addEventListener("click", function () {
+                    var current = btnContainer.getElementsByClassName("selected");
+
+                    if (current.length > 0) {
+                        current[0].className = current[0].className.replace(" selected", "");
+                    }
+
+                    this.className += " selected";
+                    document.getElementById("img").src = current[0].value
+                    sizeChanger(current);
+                    SizeSelect(current[0].name);
+                });
+            }
+
+        }
+
 
 </script>
-
 </body>
 </html>

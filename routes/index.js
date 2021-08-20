@@ -60,5 +60,11 @@ router.get('/logout',function (req,res,next){
     }
 });
 
+router.get('/cart',function (req,res,next){
 
+})
+
+router.post('/cart',function (req,res,next){
+
+})
 module.exports = router;
