@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon app.js",
-    "test": "mocha"
+    "test": "mocha ./tests/authTest.js"
   },
   "dependencies": {
     "@sentry/node": "^6.10.0",
@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "chai": "^4.3.4",
-    "cookie-parser": "^1.4.5"
+    "cookie-parser": "^1.4.5",
+    "jest": "^27.0.6"
   }
 }
