@@ -16,7 +16,7 @@ const Tracing = require("@sentry/tracing");
 const indexRouter = require('./routes/index');
 const categoryRouter = require('./routes/categories');
 const authRouter=require('./routes/auth');
-
+const port=process.env.PORT || 80;
 Sentry.init({
 	dsn: "https://ca7d3717494b4e3190372605225f86dc@o943735.ingest.sentry.io/5892672",
 	integrations: [
@@ -33,7 +33,6 @@ Sentry.init({
 });
 
 // All environments
-app.set("port", process.env.PORT || 80);
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 app.use(logger("dev"));
@@ -88,7 +87,7 @@ app.use((err,req,res,next)=>{
 
 
 // Run server
-app.listen(app.get('port'),()=>{
+app.listen(port,()=>{
 	console.log("Express Server Listening on port 80");
 });
 
