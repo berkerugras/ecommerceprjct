@@ -36,7 +36,7 @@
             <div style="position: absolute; bottom: 10%;">
                 <p  class="price_text"><b>Price:</b> <%=topC.variant.price%> $ </p>
                 <p class="size"></p>
-                <form action="http://localhost/cart/remove/<%=topC.productId%>/<%=topC.variant.product_id%>" method="GET">
+                <form action="/cart/remove/<%=topC.productId%>/<%=topC.variant.product_id%>" method="GET">
                 <button class="varButton">Remove</button>
                     <div class="d-inline-block  float-right big-margined">
                     <label for="quantity">Quantity:</label>
@@ -66,7 +66,7 @@
     cart=JSON.parse(cart)
     var productID = document.getElementsByClassName("productID");
     for(let i=0;i<productID.length;i++){
-        let url="http://localhost/cart/"+productID[i].id
+        let url="/cart/"+productID[i].id
         $.ajax({
             url: url,
             type:'GET',
@@ -111,7 +111,7 @@
 
         $.ajax({
              type:'GET',
-             url:"http://localhost/cart/changeItemQuantity/"+product_ID[i].id+"/"+variantID[i].id+"/"+e.target.value,
+             url:"/cart/changeItemQuantity/"+product_ID[i].id+"/"+variantID[i].id+"/"+e.target.value,
              dataType:'json',
              success:function (data,textStatus,xhr){
                     let pDifference;

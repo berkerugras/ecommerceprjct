@@ -15,8 +15,8 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item active" aria-current="page">Home</li>
-        <li class="breadcrumb-item active" aria-current="page"><a href="http://localhost/categories/<%=varlink%>"><%=category %></a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a href="http://localhost/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>"><%=parentcategory %></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="/categories/<%=varlink%>"><%=category %></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>"><%=parentcategory %></a></li>
         <li class="breadcrumb-item" aria-current="page"><%=type %></li>
 
     </ol>
@@ -39,13 +39,13 @@
                 <p class="cardtext"><%=topC.short_description.substring(0,140)%>...</p>
                 <div class="mix-container">
                 <p class="card-text-container">Price: <%=topC.price%>$</p>
-                    <button class="show-more-btn"><a href="http://localhost/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>/<%=type.toLowerCase()%>/<%=topC.id%>">View Product!</a></button>
+                    <button class="show-more-btn"><a href="/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>/<%=type.toLowerCase()%>/<%=topC.id%>">View Product!</a></button>
                 </div>
                 <%}else{%>
                 <p class="cardtext"><%=topC.short_description%></p>
                 <div class="mix-container">
                 <p class="card-text-container">Price: <%=topC.price%>$</p>
-                <button class="show-more-btn"><a href="http://localhost/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>/<%=type.toLowerCase()%>/<%=topC.id%>">View Product!</a></button>
+                <button class="show-more-btn"><a href="/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>/<%=type.toLowerCase()%>/<%=topC.id%>">View Product!</a></button>
                 </div>
                 <%}%>
             </div>
@@ -61,13 +61,13 @@
                 <p class="cardtext"><%=topC.short_description.substring(0,140)%>...</p>
                 <div class="mix-container">
                 <p class="card-text-container">Price: <%=topC.price%>$</p>
-                <button class="show-more-btn"><a href="http://localhost/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>/<%=type.toLowerCase()%>/<%=topC.id%>">View Product!</a></button>
+                <button class="show-more-btn"><a href="/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>/<%=type.toLowerCase()%>/<%=topC.id%>">View Product!</a></button>
                 </div>
                 <%}else{%>
                 <p class="cardtext"><%=topC.short_description%></p>
                 <div class="mix-container">
                     <p class="card-text-container">Price: <%=topC.price%>$</p>
-                    <button class="show-more-btn"><a href="http://localhost/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>/<%=type.toLowerCase()%>/<%=topC.id%>">View Product!</a></button>
+                    <button class="show-more-btn"><a href="/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>/<%=type.toLowerCase()%>/<%=topC.id%>">View Product!</a></button>
                 </div>
                 <%}%>
             </div>

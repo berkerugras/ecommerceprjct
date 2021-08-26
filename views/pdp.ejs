@@ -16,8 +16,8 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item active" aria-current="page">Home</li>
-        <li class="breadcrumb-item active" aria-current="page"><a href="http://localhost/categories/<%=varlink%>"><%=category %></a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a href="http://localhost/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>"><%=parentcategory %></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="/categories/<%=varlink%>"><%=category %></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>"><%=parentcategory %></a></li>
         <li class="breadcrumb-item" aria-current="page"><%=type %></li>
     </ol>
 </nav>
@@ -34,7 +34,7 @@
                 <span class="h-title"><%= topC.name %></span>
                 <p class="description"><%= topC.long_description %></p>
                 <div class="footer">
-                    <form action="http://localhost/cart" method="post">
+                    <form action="/cart" method="post">
                         <input type="hidden" id="productID" name="productID" value="<%=topC.id%>">
                         <input type="hidden" id="variantID" name="variantID" value="">
                         <button type="submit" class="button" disabled>Add to Cart</button>
