@@ -42,12 +42,13 @@ img{
 
 .topnav a.signin{
   float:right;
-
-
 }
 .topnav a.signup{
   float:right;
+}
 
+.topnav a.Cart{
+  float:right;
 }
 .botnav {
   position: fixed;

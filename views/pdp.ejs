@@ -34,8 +34,10 @@
                 <span class="h-title"><%= topC.name %></span>
                 <p class="description"><%= topC.long_description %></p>
                 <div class="footer">
-                    <form action="#" method="post">
-                        <button type="submit" class="button">Add to Cart</button>
+                    <form action="http://localhost/cart" method="post">
+                        <input type="hidden" id="productID" name="productID" value="<%=topC.id%>">
+                        <input type="hidden" id="variantID" name="variantID" value="">
+                        <button type="submit" class="button" disabled>Add to Cart</button>
                     </form>
                     <select name="currency" class="selector" id="currencySelector">
                         <option value="usd">USD</option>
@@ -60,7 +62,7 @@
                     <%for(let nm of va.values){%>
                     <%for(let img of topC.image_groups){%>
                     <%if(img.view_type==="large" && img.variation_value===nm.value){%>
-                    <button  name="<%=nm.value%>" value="/images/<%=img.images[0].link%>" class="varButtonColor" id="var-button"><%=nm.name%></button>
+                    <button  name="<%=nm.value%>" value="/images/<%=img.images[0].link%>" class="varButton" id="var-button"><%=nm.name%></button>
                     <%}%>
                     <%}%>
                     <%}%>
@@ -70,7 +72,7 @@
                 <%if(va.name==='Size' || va.name==='size'){%>
                 <div class="varSize" id="varSize">
                     <%for(let nm of va.values){%>
-                    <button value="<%=nm.value%>" class="varButtonSize" id="var-button" disabled><%=nm.name%></button>
+                    <button value="<%=nm.value%>" class="varButton" id="var-button" disabled><%=nm.name%></button>
                     <%}%>
                 </div>
                 <%}%>
@@ -78,7 +80,7 @@
                 <%if(va.name==='Width' || va.name==='width'){%>
                 <div class="varWidth" id="varWidth">
                     <%for(let nm of va.values){%>
-                    <button value="<%=nm.value%>" class="varButtonWidth" id="var-button" disabled><%=nm.name%></button>
+                    <button value="<%=nm.value%>" class="varButton" id="var-button" disabled><%=nm.name%></button>
                     <%}%>
                 </div>
                 <%}%>
@@ -123,78 +125,102 @@
         })
     })
 </script>
-
-
-
-
 <script>
     var variants= '<%-JSON.stringify(variants)%>';
     varObj=JSON.parse(variants)
+    let colName;
+    let sizeVal;
+    let widthVal;
 
-    function sizeChanger(current){
+    function sizeChanger(color,width=0){
         let a = 0;
-        for (let i = 0; i < varObj.length; i++) {
-            if (current[0].name === varObj[i].variation_values.color) {
-                console.log(a)
-                if (a === 0) {
-                    $('#varSize button').remove()
+        if (document.getElementById("varWidth") !== null && document.getElementById("varWidth") !== undefined) {
+            for (let i = 0; i < varObj.length; i++) {
+                if (color === varObj[i].variation_values.color && width[0].value === varObj[i].variation_values.width) {
+                    if (a === 0) {
+                        $('#varSize button').remove()
+                    }
+                    $('#varSize').append(`<button  value="${varObj[i].variation_values.size===undefined?varObj[i].variation_values.accessorySize:varObj[i].variation_values.size}" class="varButton" id="var-button">${varObj[i].variation_values.size===undefined?varObj[i].variation_values.accessorySize:varObj[i].variation_values.size}</button>`)
+                    a = a + 1;
+
                 }
-                $('#varSize').append(`<button  value="${varObj[i].variation_values.size}" class="varButtonSize" id="var-button">${varObj[i].variation_values.size}</button>`)
-                a = a + 1;
-
             }
-
         }
+        else{
+            for (let i = 0; i < varObj.length; i++) {
+                if (color[0].name === varObj[i].variation_values.color) {
+                    if (a === 0) {
+                        $('#varSize button').remove()
+                            }
+                    $('#varSize').append(`<button  value="${varObj[i].variation_values.size===undefined?varObj[i].variation_values.accessorySize:varObj[i].variation_values.size}" class="varButton" id="var-button">${varObj[i].variation_values.size===undefined?varObj[i].variation_values.accessorySize:varObj[i].variation_values.size}</button>`)
+                    a = a + 1;
+
+                        }
+
+                    }
+                }
     }
 
-    function widthChanger(sizeData,color){
-        let a = 0;
-        for (let i = 0; i < varObj.length; i++) {
-            console.log(sizeData[0].value)
-            if (color === varObj[i].variation_values.color && sizeData[0].value===varObj[i].variation_values.size) {
-                console.log(a)
-                if (a === 0) {
-                    $('#varWidth button').remove()
-                }
-
-                $('#varWidth').append(`<button  value="${varObj[i].variation_values.width}" class="varButtonWidth" id="var-button">${varObj[i].variation_values.width}</button>`)
-                a = a + 1;
-
-            }
-
-        }
-    }
-
-    function SizeSelect(colorData) {
-        var color=colorData;
+    function SizeSelect() {
         if (document.getElementById("varSize") !== null && document.getElementById("varSize") !== undefined) {
-            console.log("sizedayım")
             var SzbtnContainer = document.getElementById("varSize");
-            var sizeBtns = SzbtnContainer.getElementsByClassName("varButtonSize");
+            var sizeBtns = SzbtnContainer.getElementsByClassName("varButton");
             for (var j = 0; j < sizeBtns.length; j++) {
                 sizeBtns[j].addEventListener("click", function () {
-                    console.log("algıladım")
                     var current = SzbtnContainer.getElementsByClassName("selected");
 
                     if (current.length > 0) {
                         current[0].className = current[0].className.replace(" selected", "");
                     }
-
                     this.className += " selected";
-                    if(document.getElementById("varWidth") !== null && document.getElementById("varWidth") !== undefined) {
-                        widthChanger(current, color)
-                        WidthSelect();
+                    sizeVal=current[0].value;
+                    if(widthVal===null||widthVal===undefined){
+                        findVariantID(colName,sizeVal)
+                        document.getElementsByClassName("button")[0].disabled=false
                     }
+                    else {
+                        findVariantID(colName,sizeVal,widthVal)
+                        document.getElementsByClassName("button")[0].disabled=false
+                    }
+
                 });
             }
 
         }
     }
 
-    function WidthSelect() {
+    function widthChanger(color){
+
+        let a = 0;
+        let temp="";
+        for (let i = 0; i < varObj.length; i++) {
+            if (color[0].name === varObj[i].variation_values.color) {
+                if(varObj[i].variation_values.width===temp){
+                    continue;
+                }
+                else{
+                    temp=varObj[i].variation_values.width;
+                }
+
+                if (a === 0) {
+                    $('#varWidth button').remove()
+                }
+
+                $('#varWidth').append(`<button  value="${varObj[i].variation_values.width}" class="varButton" id="var-button">${varObj[i].variation_values.width}</button>`)
+                a = a + 1;
+
+            }
+
+        }
+    }
+
+
+
+    function WidthSelect(colordata) {
+        var color=colordata;
         if (document.getElementById("varWidth") !== null && document.getElementById("varWidth") !== undefined) {
             var wdbtnContainer = document.getElementById("varWidth");
-            var widthBtns = wdbtnContainer.getElementsByClassName("varButtonWidth");
+            var widthBtns = wdbtnContainer.getElementsByClassName("varButton");
 
             for (var k = 0; k < widthBtns.length; k++) {
 
@@ -206,7 +232,9 @@
                     }
 
                     this.className += " selected";
-
+                    widthVal=current[0].value;
+                    sizeChanger(color,current)
+                    SizeSelect()
                 });
             }
         }
@@ -214,9 +242,7 @@
 
         if (document.getElementById("varColor") !== null && document.getElementById("varColor") !== undefined) {
             var btnContainer = document.getElementById("varColor");
-            var colorBtns = btnContainer.getElementsByClassName("varButtonColor");
-            console.log(varObj[0].variation_values.color)
-            console.log(varObj[1])
+            var colorBtns = btnContainer.getElementsByClassName("varButton");
             for (var i = 0; i < colorBtns.length; i++) {
 
                 colorBtns[i].addEventListener("click", function () {
@@ -228,14 +254,49 @@
 
                     this.className += " selected";
                     document.getElementById("img").src = current[0].value
-                    sizeChanger(current);
-                    SizeSelect(current[0].name);
+                    colName=current[0].name
+                    if((document.getElementById("varWidth") === null || document.getElementById("varWidth") === undefined) && (document.getElementById("varSize") === null || document.getElementById("varSize") === undefined)){
+                        findVariantID(current[0].name)
+                        document.getElementsByClassName("button")[0].disabled=false
+                    }
+                   else if (document.getElementById("varWidth") === null || document.getElementById("varWidth") === undefined) {
+                        sizeChanger(current);
+                        SizeSelect();
+                    }
+                    else{
+                        widthChanger(current)
+                        WidthSelect(current[0].name)
+
+                    }
                 });
             }
 
         }
 
-
+    function findVariantID(color,size=0,width=0){
+        if((document.getElementById("varWidth") === null || document.getElementById("varWidth") === undefined) && (document.getElementById("varSize") === null || document.getElementById("varSize") === undefined) ){
+            for (let i = 0; i < varObj.length; i++) {
+                if (color === varObj[i].variation_values.color) {
+                    document.getElementById("variantID").value=varObj[i].product_id;
+                }
+            }
+        }
+        else if(document.getElementById("varWidth") === null || document.getElementById("varWidth") === undefined) {
+            for (let i = 0; i < varObj.length; i++) {
+                if (color === varObj[i].variation_values.color && size === (varObj[i].variation_values.size===undefined?varObj[i].variation_values.accessorySize:varObj[i].variation_values.size)) {
+                    document.getElementById("variantID").value=varObj[i].product_id;
+                }
+            }
+        }
+        else{
+            for (let i = 0; i < varObj.length; i++) {
+                if (color === varObj[i].variation_values.color && size === (varObj[i].variation_values.size===undefined?varObj[i].variation_values.accessorySize:varObj[i].variation_values.size) && width===varObj[i].variation_values.width) {
+                    document.getElementById("variantID").value=varObj[i].product_id;
+                }
+            }
+        }
+    }
 </script>
+
 </body>
 </html>
