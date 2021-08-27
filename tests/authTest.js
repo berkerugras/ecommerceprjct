@@ -3,9 +3,20 @@ const server=require("../app")
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const should=chai.should();
-
+const jest=require("jest")
 const { expect } = chai;
 chai.use(chaiHttp);
+
+describe("sign in testing",()=>{
+    test('')
+})
+
+
+
+
+
+
+
 // describe("SignUpTesting", () => {
 //     before((done) =>{
 //         chai.request(server)
