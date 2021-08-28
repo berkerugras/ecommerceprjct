@@ -15,7 +15,11 @@ describe('SignIn testing',()=>{
 
             },
         })
-        await authServices.postSignInServices(req);
+        const res=mockResponse()
+        const next=mockNext()
+        await authController.postSignIn(req,res,next);
+
+        expect(res.send()).toHaveBeenCalledTimes(1)
 
 
     })
