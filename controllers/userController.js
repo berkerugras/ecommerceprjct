@@ -111,3 +111,85 @@ exports.changeQuantityController=async (req, res, next) => {
 
     }
 }
+
+//WISHLIST
+exports.getWishlistController=async(req,res,next)=>{
+    try {
+        if (req.session.userid && req.session.token) {
+            try {
+                const response=await userServices.getWishlistServices(req)
+                res.status(200).render("wishlist",{
+                    _:_,
+                    title:"Alibazon",
+                    items:response.data,
+                    apiKey:api_key
+                })
+
+            } catch (err) {
+                err.status = 400;
+                return res.status(400).render("wishlist",{
+                    _:_,
+                    title:"Alibazon",
+                    items:undefined,
+                    apiKey:api_key
+                });
+            }
+        } else {
+            res.redirect('./auth/signin')
+
+        }
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+}
+
+exports.postWishlistController=async(req,res,next)=>{
+    try {
+        console.log("girdim zaa 0")
+        if (req.session.userid && req.session.token) {
+            console.log("girdim zaa")
+            try {
+                await userServices.postWishlistServices(req)
+                res.status(200).redirect('back')
+            }
+            catch (err){
+                var err=new Error('Couldnt send the data to the end-point');
+                err.status=400;
+                return next(err);
+            }
+        } else {
+            res.redirect('./auth/signin')
+
+        }
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+}
+
+exports.getWishlistProduct=async(req,res,next)=>{
+    try {
+        const response=await userServices.getWishlistProduct(req)
+        res.status(200).send(response.data)
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+}
+
+exports.removeWishlistItem=async(req,res,next)=>{
+    try {
+        await userServices.removeWishlistItem(req)
+        res.status(200).redirect('back')
+    } catch (err) {
+        res.status(500).json({message: err});
+    }
+}
+
+exports.changeWLQuantityController=async(req,res,next)=>{
+    try{
+        const response=await userServices.changeWLQuantityServices(req)
+        res.status(200).send(response.data)
+
+    }catch (err){
+
+    }
+}

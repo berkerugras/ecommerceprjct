@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon app.js",
-    "test": "mocha ./tests/authTest.js"
+    "test": "jest __tests__"
   },
   "dependencies": {
     "@sentry/node": "^6.10.0",
@@ -19,7 +19,9 @@
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "~4.16.1",
+    "express-favicon": "^2.0.1",
     "express-session": "^1.17.2",
+    "faker": "^5.5.3",
     "http-errors": "~1.6.3",
     "jquery": "^3.6.0",
     "method-override": "^3.0.0",
@@ -28,12 +30,13 @@
     "mongoose": "^5.13.5",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.12",
+    "sinon": "^11.1.2",
     "slugify": "^1.6.0",
     "underscore": "^1.13.1"
   },
   "devDependencies": {
     "chai": "^4.3.4",
     "cookie-parser": "^1.4.5",
-    "jest": "^27.0.6"
+    "jest": "^27.1.0"
   }
 }

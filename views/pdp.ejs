@@ -39,6 +39,13 @@
                         <input type="hidden" id="variantID" name="variantID" value="">
                         <button type="submit" class="button" disabled>Add to Cart</button>
                     </form>
+
+                    <form action="/wishlist" method="post">
+                        <input type="hidden" id="WLproductID" name="WLproductID" value="<%=topC.id%>">
+                        <input type="hidden" id="WLvariantID" name="WLvariantID" value="">
+                        <button type="submit" class="wishlist-button" disabled>Add to Wishlist</button>
+                    </form>
+
                     <select name="currency" class="selector" id="currencySelector">
                         <option value="usd">USD</option>
                         <option value="eur">EURO</option>
@@ -177,10 +184,12 @@
                     if(widthVal===null||widthVal===undefined){
                         findVariantID(colName,sizeVal)
                         document.getElementsByClassName("button")[0].disabled=false
+                        document.getElementsByClassName("wishlist-button")[0].disabled=false
                     }
                     else {
                         findVariantID(colName,sizeVal,widthVal)
                         document.getElementsByClassName("button")[0].disabled=false
+                        document.getElementsByClassName("wishlist-button")[0].disabled=false
                     }
 
                 });
@@ -258,6 +267,7 @@
                     if((document.getElementById("varWidth") === null || document.getElementById("varWidth") === undefined) && (document.getElementById("varSize") === null || document.getElementById("varSize") === undefined)){
                         findVariantID(current[0].name)
                         document.getElementsByClassName("button")[0].disabled=false
+                        document.getElementsByClassName("wishlist-button")[0].disabled=false
                     }
                    else if (document.getElementById("varWidth") === null || document.getElementById("varWidth") === undefined) {
                         sizeChanger(current);
@@ -278,6 +288,7 @@
             for (let i = 0; i < varObj.length; i++) {
                 if (color === varObj[i].variation_values.color) {
                     document.getElementById("variantID").value=varObj[i].product_id;
+                    document.getElementById("WLvariantID").value=varObj[i].product_id;
                 }
             }
         }
@@ -285,6 +296,7 @@
             for (let i = 0; i < varObj.length; i++) {
                 if (color === varObj[i].variation_values.color && size === (varObj[i].variation_values.size===undefined?varObj[i].variation_values.accessorySize:varObj[i].variation_values.size)) {
                     document.getElementById("variantID").value=varObj[i].product_id;
+                    document.getElementById("WLvariantID").value=varObj[i].product_id;
                 }
             }
         }
@@ -292,6 +304,7 @@
             for (let i = 0; i < varObj.length; i++) {
                 if (color === varObj[i].variation_values.color && size === (varObj[i].variation_values.size===undefined?varObj[i].variation_values.accessorySize:varObj[i].variation_values.size) && width===varObj[i].variation_values.width) {
                     document.getElementById("variantID").value=varObj[i].product_id;
+                    document.getElementById("WLvariantID").value=varObj[i].product_id;
                 }
             }
         }

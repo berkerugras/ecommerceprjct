@@ -11,7 +11,7 @@ const session=require('express-session');
 const methodOverride = require('method-override')
 const Sentry = require('@sentry/node');
 const Tracing = require("@sentry/tracing");
-
+const favicon=require("express-favicon")
 //routes
 const indexRouter = require('./routes/index');
 const categoryRouter = require('./routes/categories');
@@ -39,6 +39,7 @@ app.use(logger("dev"));
 app.use(Sentry.Handlers.requestHandler());
 app.use(Sentry.Handlers.tracingHandler());
 
+
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json());
 app.use(methodOverride())
@@ -49,7 +50,7 @@ app.use(session({
 	saveUninitialized:false
 }));
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use(favicon(__dirname+'/public/images/favicon.png'))
 //make user ID available in templates
 app.use(function (req,res,next){
 	res.locals.currentUser=req.session.userid;

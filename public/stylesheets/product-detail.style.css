@@ -141,6 +141,16 @@
     border-radius: 0.3rem;
     background-color: white;
     text-align: center;
+    margin-bottom: 0.2rem;
+}
+
+.wishlist-button{
+    align-content: start;
+    font-size: 1rem;
+    border: 3px solid #d234a0;
+    border-radius: 0.3rem;
+    background-color: white;
+    text-align: center;
 }
 
 .footer .button:hover{

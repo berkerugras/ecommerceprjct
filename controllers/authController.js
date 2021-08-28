@@ -29,7 +29,7 @@ exports.postSignUp=async function (req, res, next) {
             }
             try {
                 await authService.postSignUpServices(req)
-                return res.redirect("../profile")
+                return res.status(302).redirect("../profile")
             }
             catch (err){
                 var err=new Error('Couldnt send the data to the end-point');
@@ -63,11 +63,10 @@ exports.getSignIn=async function (req, res, next) {
 
 exports.postSignIn=async function (req, res, next) {
     try {
-
         if (req.body.user_password && req.body.email) {
             try {
                 await authService.postSignInServices(req)
-                return res.redirect("../profile")
+                return res.status(302).redirect("/profile")
             }
             catch (err){
                 var err=new Error('Username or password is incorrect');
