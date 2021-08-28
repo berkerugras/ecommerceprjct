@@ -120,7 +120,7 @@
                     total=pDifference+parseFloat(document.getElementById("SumPrice").innerText)
 
                     document.getElementsByClassName("price_text")[i].innerHTML="<b>Price:</b>"+`<span class="productPrice">${price*e.target.value}</span>`+"$"
-                    document.getElementById("total_Price").innerHTML="Total Price: "+`<b id="SumPrice">${total}</b>`
+                    document.getElementById("total_Price").innerHTML="Total Price: "+`<b id="SumPrice">${total} $</b>`
 
             },
             error: function () {
