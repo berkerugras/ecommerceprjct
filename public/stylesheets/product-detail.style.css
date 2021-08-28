@@ -123,7 +123,7 @@
 
 }
 
-.text-container .footer{
+.text-container .footernew{
     width: 100%;
      /*position: absolute;*/
     /* bottom: 0px; */
@@ -134,7 +134,7 @@
 
 }
 
-.footer .button{
+.footernew .button{
     align-content: start;
     font-size: 1rem;
     border: 3px solid #d234a0;
@@ -153,26 +153,31 @@
     text-align: center;
 }
 
-.footer .button:hover{
+
+.footernew .button:hover{
+    background-color: #d27120;
+    color: white;
+}
+.wishlist-button:hover{
     background-color: #d27120;
     color: white;
 }
 
-.footer .price_text{
+.footernew .price_text{
     display: inline-block;
     float:right;
     margin-right: 0.5rem;
 
 }
 
-.footer .price{
+.footernew .price{
     display: inline-block;
     float:right;
     margin-right: 0.7rem;
 
 }
 
-.footer .selector{
+.footernew .selector{
     display: inline-block;
     float:right;
 }

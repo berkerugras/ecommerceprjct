@@ -33,14 +33,14 @@
             <div class="text-container">
                 <span class="h-title"><%= topC.name %></span>
                 <p class="description"><%= topC.long_description %></p>
-                <div class="footer">
+                <div class="footernew">
                     <form action="/cart" method="post">
                         <input type="hidden" id="productID" name="productID" value="<%=topC.id%>">
                         <input type="hidden" id="variantID" name="variantID" value="">
                         <button type="submit" class="button" disabled>Add to Cart</button>
                     </form>
 
-                    <form action="/wishlist" method="post">
+                    <form style="width:fit-content; display: inline-block" action="/wishlist" method="post">
                         <input type="hidden" id="WLproductID" name="WLproductID" value="<%=topC.id%>">
                         <input type="hidden" id="WLvariantID" name="WLvariantID" value="">
                         <button type="submit" class="wishlist-button" disabled>Add to Wishlist</button>
