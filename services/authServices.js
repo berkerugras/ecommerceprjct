@@ -23,7 +23,6 @@ exports.postSignInServices=async function(req){
         "email": req.body.email,
         "password": req.body.user_password
     }
-
     const response = await axios.post("https://osf-digital-backend-academy.herokuapp.com/api/auth/signin",user);
     req.session.token=response.data.token;
     req.session.userid=response.data.user._id;

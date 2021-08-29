@@ -52,11 +52,13 @@ exports.getcartController=async function (req, res, next) {
                 });
             }
         } else {
-            res.redirect('./auth/signin')
+            res.status(302).redirect('./auth/signin')
 
         }
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't send data to the endpoint")
+        err.status=500
+        return next(err)
     }
 }
 
@@ -66,7 +68,7 @@ exports.postCartController=async function (req, res, next) {
 
             try {
                 await userServices.postCartServices(req)
-                res.status(200).redirect('back')
+                res.status(302).redirect('back')
             }
             catch (err){
                 var err=new Error('Couldnt send the data to the end-point');
@@ -78,7 +80,9 @@ exports.postCartController=async function (req, res, next) {
 
         }
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't send data to the endpoint")
+        err.status=500
+        return next(err)
     }
 }
 
@@ -87,7 +91,9 @@ exports.getCartProduct=async (req, res, next) => {
         const response=await userServices.getCartProductServices(req)
         res.status(200).send(response.data)
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't send data to the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -95,9 +101,11 @@ exports.getCartProduct=async (req, res, next) => {
 exports.removeCartItem=async (req, res, next) => {
     try {
         await userServices.removeCartItemServices(req)
-        res.status(200).redirect('back')
+        res.status(302).redirect('back')
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't send data to the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -108,7 +116,9 @@ exports.changeQuantityController=async (req, res, next) => {
         res.status(200).send(response.data)
 
     }catch (err){
-
+        err=new Error("couldn't send data to the endpoint")
+        err.status=500
+        return next(err)
     }
 }
 
@@ -135,22 +145,22 @@ exports.getWishlistController=async(req,res,next)=>{
                 });
             }
         } else {
-            res.redirect('./auth/signin')
+            res.status(302).redirect('./auth/signin')
 
         }
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't send data to the endpoint")
+        err.status=500
+        return next(err)
     }
 }
 
 exports.postWishlistController=async(req,res,next)=>{
     try {
-        console.log("girdim zaa 0")
         if (req.session.userid && req.session.token) {
-            console.log("girdim zaa")
             try {
                 await userServices.postWishlistServices(req)
-                res.status(200).redirect('back')
+                res.status(302).redirect('back')
             }
             catch (err){
                 var err=new Error('Couldnt send the data to the end-point');
@@ -162,7 +172,9 @@ exports.postWishlistController=async(req,res,next)=>{
 
         }
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't send data to the endpoint")
+        err.status=500
+        return next(err)
     }
 }
 
@@ -171,16 +183,20 @@ exports.getWishlistProduct=async(req,res,next)=>{
         const response=await userServices.getWishlistProduct(req)
         res.status(200).send(response.data)
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't send data to the endpoint")
+        err.status=500
+        return next(err)
     }
 }
 
 exports.removeWishlistItem=async(req,res,next)=>{
     try {
         await userServices.removeWishlistItem(req)
-        res.status(200).redirect('back')
+        res.status(302).redirect('back')
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't send data to the endpoint")
+        err.status=500
+        return next(err)
     }
 }
 
@@ -190,6 +206,8 @@ exports.changeWLQuantityController=async(req,res,next)=>{
         res.status(200).send(response.data)
 
     }catch (err){
-
+        err=new Error("couldn't send data to the endpoint")
+        err.status=500
+        return next(err)
     }
 }

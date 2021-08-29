@@ -23,7 +23,6 @@ exports.postCartServices=async function (req){
         "variantId": req.body.variantID,
         "quantity": "1"
     }
-
     const response = await axios.post("https://osf-digital-backend-academy.herokuapp.com/api/cart/addItem", cart, config);
 }
 
@@ -38,6 +37,7 @@ exports.getCartProductServices=async function(req){
 }
 
 exports.removeCartItemServices=async function(req){
+
     const response = await axios.delete("https://osf-digital-backend-academy.herokuapp.com/api/cart/removeItem",{
         headers: { Authorization: `Bearer ${req.session.token}`},
         data: {
@@ -46,6 +46,7 @@ exports.removeCartItemServices=async function(req){
             "variantId": req.params.variantid,
         }
     })
+
 }
 
 exports.changeQuantityServices=async function(req){
@@ -77,7 +78,6 @@ exports.postWishlistServices=async function (req){
     const config = {
         headers: { Authorization: `Bearer ${req.session.token}` }
     }
-    console.log(req.body.WLproductID,req.body.WLvariantID)
     const wishlist = {
         "secretKey": api_key,
         "productId": req.body.WLproductID,

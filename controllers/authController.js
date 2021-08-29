@@ -21,7 +21,7 @@ exports.getSignUp=async function (req, res, next) {
 
 exports.postSignUp=async function (req, res, next) {
     try {
-        if (req.body.first_name && req.body.first_name && req.body.last_name && req.body.user_name && req.body.user_password && req.body.email) {
+        if (req.body.first_name && req.body.last_name && req.body.user_name && req.body.user_password && req.body.email) {
             if (req.body.user_password !== req.body.confirm_password) {
                 var err = new Error("Passwords do not match.")
                 err.status = 400;

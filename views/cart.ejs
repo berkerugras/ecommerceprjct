@@ -33,9 +33,10 @@
             <p style="float: bottom; margin-top: 10%; " class="longDescription"></p>
             </div>
 
-            <div style="position: absolute; bottom: 10%;">
+            <div style="position: absolute; bottom: 5%;">
                 <p  class="price_text"><b>Price:</b> <%=topC.variant.price%> $ </p>
                 <p class="size"></p>
+                <p class="width"></p>
                 <form action="/cart/remove/<%=topC.productId%>/<%=topC.variant.product_id%>" method="GET">
                 <button class="varButton">Remove</button>
                     <div class="d-inline-block  float-right big-margined">
@@ -74,11 +75,18 @@
             success:function (data,textStatus,xhr){
                 let color=cart.items[i].variant.variation_values.color
                 let size=cart.items[i].variant.variation_values.size
+                let width;
+                if(cart.items[i].variant.variation_values.width){
+                    width=cart.items[i].variant.variation_values.width;
+                }
                 for(img of data[0].image_groups){
                    if(img.variation_value===color && img.view_type==="medium"){
                        document.getElementsByClassName('img')[i].src="/images/"+img.images[0].link
                        document.getElementsByClassName('cartH-title')[i].innerHTML=img.images[0].title
                        document.getElementsByClassName('size')[i].innerHTML="<b>Size:</b> "+size
+                       if(cart.items[i].variant.variation_values.width){
+                           document.getElementsByClassName('width')[i].innerHTML="<b>Width:</b> "+width
+                       }
                        document.getElementsByClassName('longDescription')[i].innerHTML=data[0].long_description
                    }
                 }
