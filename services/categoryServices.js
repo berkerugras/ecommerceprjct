@@ -192,7 +192,6 @@ exports.menDressServices=async function(){
 }
 
 exports.womenEarringsProductServices=async function (req){
-    req.params.productid
     const response = await axios({
         url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
         method: "get",
@@ -201,7 +200,6 @@ exports.womenEarringsProductServices=async function (req){
 }
 
 exports.womenNecklacesProductServices=async function(req){
-    req.params.productid
     const response = await axios({
         url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
         method: "get",
@@ -210,7 +208,6 @@ exports.womenNecklacesProductServices=async function(req){
 }
 
 exports.womenScarvesProductServices=async function(req){
-    req.params.productid
     const response = await axios({
         url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
         method: "get",
@@ -219,7 +216,6 @@ exports.womenScarvesProductServices=async function(req){
 }
 
 exports.womenShoesProductServices=async function(req){
-    req.params.productid
     const response = await axios({
         url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
         method: "get",
@@ -229,7 +225,6 @@ exports.womenShoesProductServices=async function(req){
 
 
 exports.womenDressesProductServices=async function(req){
-    req.params.productid
     const response = await axios({
         url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
         method: "get",
@@ -238,7 +233,6 @@ exports.womenDressesProductServices=async function(req){
 }
 
 exports.womenJacketProductServices=async function(req){
-    req.params.productid
     const response = await axios({
         url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
         method: "get",
@@ -247,7 +241,6 @@ exports.womenJacketProductServices=async function(req){
 }
 
 exports.womenBottomsProductServices=async function(req){
-    req.params.productid
     const response = await axios({
         url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
         method: "get",
@@ -256,7 +249,6 @@ exports.womenBottomsProductServices=async function(req){
 }
 
 exports.womenTopsProductServices=async function(req){
-    req.params.productid
     const response = await axios({
         url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
         method: "get",
@@ -265,7 +257,6 @@ exports.womenTopsProductServices=async function(req){
 }
 
 exports.menLuggagesProductServices=async function(req){
-    req.params.productid
     const response = await axios({
         url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
         method: "get",
@@ -274,7 +265,6 @@ exports.menLuggagesProductServices=async function(req){
 }
 
 exports.menGlovesProductServices=async function(req){
-    req.params.productid
     const response = await axios({
         url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
         method: "get",
@@ -283,7 +273,6 @@ exports.menGlovesProductServices=async function(req){
 }
 
 exports.menTiesProductServices=async function(req){
-    req.params.productid
     const response = await axios({
         url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
         method: "get",
@@ -292,7 +281,6 @@ exports.menTiesProductServices=async function(req){
 }
 
 exports.menDressProductServices=async function(req){
-    req.params.productid
     const response = await axios({
         url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
         method: "get",
@@ -301,7 +289,6 @@ exports.menDressProductServices=async function(req){
 }
 
 exports.menShortsProductServices=async function(req){
-    req.params.productid
     const response = await axios({
         url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
         method: "get",
@@ -310,7 +297,6 @@ exports.menShortsProductServices=async function(req){
 }
 
 exports.menJacketProductServices=async function(req){
-    req.params.productid
     const response = await axios({
         url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
         method: "get",
@@ -319,7 +305,6 @@ exports.menJacketProductServices=async function(req){
 }
 
 exports.menPantsProductServices=async function(req){
-    req.params.productid
     const response = await axios({
         url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
         method: "get",
@@ -328,7 +313,6 @@ exports.menPantsProductServices=async function(req){
 }
 
 exports.menSuitsProductServices=async function(req){
-    req.params.productid
     const response = await axios({
         url: "http://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id="+req.params.productid+"&secretKey="+api_key,
         method: "get",

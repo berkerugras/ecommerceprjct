@@ -15,7 +15,9 @@ exports.menController=async function (req, res, next) {
             varlink:"men"
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -32,7 +34,9 @@ exports.womenCategoryController=async (req, res, next) => {
             varlink:"women"
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -51,7 +55,9 @@ exports.womenClothingController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -69,7 +75,9 @@ exports.womenJewelryController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -87,7 +95,9 @@ exports.womenAccessoriesController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -105,7 +115,9 @@ exports.menClothingController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -123,7 +135,9 @@ exports.menAccessoriesController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -142,7 +156,9 @@ exports.womenEarringsController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -162,7 +178,9 @@ exports.womenNecklacesController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -183,7 +201,9 @@ exports.womenScarvesController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -203,7 +223,9 @@ exports.womenShoesController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -223,7 +245,9 @@ exports.womenDressesController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -243,7 +267,9 @@ exports.womenJacketController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -263,7 +289,9 @@ exports.womenBottomsController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -283,7 +311,9 @@ exports.womenTopsController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -303,7 +333,9 @@ exports.menLuggagesController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -323,7 +355,9 @@ exports.menGlovesController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -343,7 +377,9 @@ exports.menTiesController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -363,7 +399,9 @@ exports.menDressController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -383,7 +421,9 @@ exports.menShortController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -403,7 +443,9 @@ exports.menJacketController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -423,7 +465,9 @@ exports.menPantsController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -443,7 +487,9 @@ exports.menSuitsController=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -465,14 +511,15 @@ exports.womenEarringsProduct=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
 
 exports.womenNecklacesProduct=async (req, res, next) => {
     try {
-        req.params.productid
         const response = await categoryServices.womenNecklacesProductServices(req)
         res.status(200).render("pdp",{
             _:_,
@@ -487,14 +534,15 @@ exports.womenNecklacesProduct=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
 
 exports.womenScarvesProduct=async (req, res, next) => {
     try {
-        req.params.productid
         const response = await categoryServices.womenScarvesProductServices(req)
         res.status(200).render("pdp",{
             _:_,
@@ -509,14 +557,15 @@ exports.womenScarvesProduct=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
 
 exports.womenShoesProduct=async (req, res, next) => {
     try {
-        req.params.productid
         const response = await categoryServices.womenShoesProductServices(req)
         res.status(200).render("pdp",{
             _:_,
@@ -531,14 +580,15 @@ exports.womenShoesProduct=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
 
 exports.womenDressesProduct=async (req, res, next) => {
     try {
-        req.params.productid
         const response = await categoryServices.womenDressesProductServices(req)
         res.status(200).render("pdp",{
             _:_,
@@ -553,14 +603,15 @@ exports.womenDressesProduct=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
 
 exports.womenJacketProduct=async (req, res, next) => {
     try {
-        req.params.productid
         const response = await categoryServices.womenJacketProductServices(req)
         res.status(200).render("pdp",{
             _:_,
@@ -575,14 +626,15 @@ exports.womenJacketProduct=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
 
 exports.womenBottomsProduct=async (req, res, next) => {
     try {
-        req.params.productid
         const response = await categoryServices.womenBottomsProductServices(req)
         res.status(200).render("pdp",{
             _:_,
@@ -597,14 +649,15 @@ exports.womenBottomsProduct=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
 
 exports.womenTopsProduct=async (req, res, next) => {
     try {
-        req.params.productid
         const response = await categoryServices.womenTopsProductServices(req)
         res.status(200).render("pdp",{
             _:_,
@@ -617,14 +670,15 @@ exports.womenTopsProduct=async (req, res, next) => {
             variants:response.data[0].variants
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
 
 exports.menLuggagesProduct=async (req, res, next) => {
     try {
-        req.params.productid
         const response = await categoryServices.menLuggagesProductServices(req)
         res.status(200).render("pdp",{
             _:_,
@@ -639,14 +693,15 @@ exports.menLuggagesProduct=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
 
 exports.menGlovesProduct=async (req, res, next) => {
     try {
-        req.params.productid
         const response = await categoryServices.menGlovesProductServices(req)
         res.status(200).render("pdp",{
             _:_,
@@ -661,14 +716,15 @@ exports.menGlovesProduct=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
 
 exports.menTiesProduct=async (req, res, next) => {
     try {
-        req.params.productid
         const response = await categoryServices.menTiesProductServices(req)
         res.status(200).render("pdp",{
             _:_,
@@ -683,14 +739,15 @@ exports.menTiesProduct=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
 
 exports.menDressProduct=async (req, res, next) => {
     try {
-        req.params.productid
         const response = await categoryServices.menDressProductServices(req)
         res.status(200).render("pdp",{
             _:_,
@@ -705,14 +762,15 @@ exports.menDressProduct=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
 
 exports.menShortProduct=async (req, res, next) => {
     try {
-        req.params.productid
         const response = await categoryServices.menShortsProductServices(req)
         res.status(200).render("pdp",{
             _:_,
@@ -727,14 +785,15 @@ exports.menShortProduct=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
 
 exports.menJacketProduct=async (req, res, next) => {
     try {
-        req.params.productid
         const response = await categoryServices.menJacketProductServices(req)
         res.status(200).render("pdp",{
             _:_,
@@ -749,7 +808,9 @@ exports.menJacketProduct=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -772,7 +833,9 @@ exports.menPantsProduct=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }
@@ -794,7 +857,9 @@ exports.menSuitsProduct=async (req, res, next) => {
 
         })
     } catch (err) {
-        res.status(500).json({message: err});
+        err=new Error("couldn't get data from the endpoint")
+        err.status=500
+        return next(err)
     }
 
 }

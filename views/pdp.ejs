@@ -28,7 +28,7 @@
         <%if(img.view_type==="large" && !img.variation_value){%>
         <div class="detail-container">
             <div class="img-container">
-                <img id="img" src="/images/<%= img.images[0].link %>" alt="<%=topC.name%>">
+                <img id="img" style="height: inherit" src="/images/<%= img.images[0].link %>" alt="<%=topC.name%>">
             </div>
             <div class="text-container">
                 <span class="h-title"><%= topC.name %></span>
