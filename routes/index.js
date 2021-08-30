@@ -4,12 +4,14 @@ require('dotenv').config();
 const userController=require("../controllers/userController")
 
 router.get('/',async function (req, res, next) {
-    try {
-        await res.redirect("/categories/women")
-    }catch (err){
-        res.status(500).json({message: err});
-    }
-
+    try{
+    res.status(200).render("mainPage", {
+        title: "Alibazon",
+    })
+} catch (err) {
+    err.status=500
+    return next(err)
+}
 });
 
 router.get('/profile',userController.profileController);

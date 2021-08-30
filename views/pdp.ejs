@@ -18,7 +18,7 @@
         <li class="breadcrumb-item active" aria-current="page">Home</li>
         <li class="breadcrumb-item active" aria-current="page"><a href="/categories/<%=varlink%>"><%=category %></a></li>
         <li class="breadcrumb-item active" aria-current="page"><a href="/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>"><%=parentcategory %></a></li>
-        <li class="breadcrumb-item" aria-current="page"><%=type %></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="/categories/<%=varlink%>/<%=parentcategory.toLowerCase()%>/<%=type%>"><%=type %></a></li>
     </ol>
 </nav>
 <div>
@@ -101,7 +101,7 @@
 </div>
 <footer>
     <div class="botnav">
-        <a class="title"><%= title%> @2021</a>
+        <a class="title"><%= title%> Copyright 2021 OSF DIGITAL</a>
     </div>
 </footer>
 

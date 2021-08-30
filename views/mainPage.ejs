@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/product-detail.style.css"/>
+</head>
+
+<body>
+<header>
+    <%-include('./navbar.ejs')%>
+</header>
+    <div style="margin-top: 10%">
+    <ul class="flex">
+        <li>
+            <div class="detail-container">
+                <div class="cart-text-container">
+                  <a  style="margin-left: 42.5rem" class="htitle" href="/categories/women">WOMEN</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="detail-container">
+                <div class="cart-text-container">
+                   <a style="margin-left: 45rem"  class="htitle" href="/categories/men">MEN</a>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+    </div>
+
+<footer>
+    <div class="botnav">
+        <a class="title"><%= title%> Copyright 2020 OSF DIGITAL</a>
+
+    </div>
+</footer>
+</body>
+</html>
+
+
+

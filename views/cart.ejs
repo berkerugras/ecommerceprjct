@@ -109,9 +109,9 @@
         document.getElementsByClassName("price_text")[i].innerHTML="<b>Price:</b>"+`<span class="productPrice">${price*input[i].value}</span>`+"$"
         sum=sum+price*input[i].value;
         input[i].addEventListener('input', (e) => {
-         if (e.target.value === "0") {
+         if (e.target.value === "0" || e.target.value==="") {
             if (confirm('Are you sure you want to remove the item')) {
-
+                e.target.value="0";
             } else {
                 e.target.value = 1;
             }
@@ -129,6 +129,9 @@
 
                     document.getElementsByClassName("price_text")[i].innerHTML="<b>Price:</b>"+`<span class="productPrice">${price*e.target.value}</span>`+"$"
                     document.getElementById("total_Price").innerHTML="Total Price: "+`<b id="SumPrice">${total} $</b>`
+                    if(e.target.value==="0" || e.target.value==="" ){
+                        location.reload()
+                    }
 
             },
             error: function () {
